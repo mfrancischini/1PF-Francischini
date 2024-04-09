@@ -1,0 +1,34 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer class="example-sidenav max-width-100" mode="side" opened="true">
+    <div class="container">
+      
+          <div class="row">
+        <div class="col">
+          <button mat-icon-button (click)="mostrarUsuariosComponente()"><mat-icon>group</mat-icon></button>Alumnos
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button mat-icon-button (click)="mostrarCursosComponente()"><mat-icon>menu_book</mat-icon></button>Cursos
+         
+        </div>
+      </div>
+
+    </div>  
+  </mat-drawer> 
+
+
+  <div class="example-sidenav-content">
+    <mat-toolbar color="warn">
+      <button mat-icon-button class="example-icon" (click)="drawer.toggle()" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span appAumentarFonts>School Programing</span>
+    </mat-toolbar>
+    <main>
+      <app-usuarios *ngIf="mostrarUsuarios"></app-usuarios>
+      <app-cursos *ngIf="mostrarCursos"></app-cursos>
+
+    </main>
+  </div>
+</mat-drawer-container>
