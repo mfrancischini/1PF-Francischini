@@ -4,12 +4,19 @@
       
           <div class="row">
         <div class="col">
-          <button mat-icon-button (click)="mostrarUsuariosComponente()"><mat-icon>group</mat-icon></button>Alumnos
+          <button mat-icon-button routerLink="/alumnos"><mat-icon>group</mat-icon></button>Alumnos
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <button mat-icon-button (click)="mostrarCursosComponente()"><mat-icon>menu_book</mat-icon></button>Cursos
+          <button mat-icon-button routerLink="/cursos"><mat-icon>menu_book</mat-icon></button>Cursos
+         
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button mat-icon-button routerLink="/forms"><mat-icon>edit_note</mat-icon></button>Formulario
          
         </div>
       </div>
@@ -26,9 +33,7 @@
       <span appAumentarFonts>School Programing</span>
     </mat-toolbar>
     <main>
-      <app-usuarios *ngIf="mostrarUsuarios"></app-usuarios>
-      <app-cursos *ngIf="mostrarCursos"></app-cursos>
-
+      <router-outlet></router-outlet>
     </main>
   </div>
 </mat-drawer-container>

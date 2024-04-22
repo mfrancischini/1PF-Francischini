@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AdministracionModule } from './esquema/administracion/administracion.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { AdministracionModule } from './esquema/administracion/administracion.mo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AdministracionModule
+    AdministracionModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync()
