@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Crear un Curso</h2>
+<div mat-dialog-content>
+    <form   [formGroup]="cursoForm">
+      <div class="row">
+
+        <div class="col-6">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Id Curso</mat-label>
+            <input formControlName="id_curso" matInput />
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Nombre Clase</mat-label>
+            <input formControlName="nombre_curso" matInput />
+        
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Profesor</mat-label>
+            <input formControlName="profesor" matInput />
+          </mat-form-field>
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Fecha Inicio</mat-label>
+              <input formControlName="fecha_cursada" matInput />
+            </mat-form-field>
+          </div>
+          
+          
+      </div>
+      <div class="row">
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Horario</mat-label>
+              <input formControlName="horario" matInput />
+            </mat-form-field>
+          </div>
+          
+          
+      </div>
+    </form>
+</div>
+
+<div class="d-flex justify-content-end" mat-dialog-actions>
+  <button mat-dialog-close mat-button>Cancelar</button>
+  <button mat-button (click)="enviar()">Guardar</button>
+</div>
+

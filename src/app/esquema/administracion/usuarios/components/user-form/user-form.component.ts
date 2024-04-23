@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IUsuario } from '../../../models';
@@ -16,16 +16,13 @@ export class UserFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private matDialogRef: MatDialogRef<UserFormComponent>,private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) private usuarioEditado?: IUsuario) {
-    this.userForm = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      curso: ['', Validators.required],
-      email: this.formBuilder.control('', [
-
-        Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}'),
-        Validators.required,
-      ]),
-    })
+      this.userForm = this.formBuilder.group({
+        nombre: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
+        apellido: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
+        curso: ['', Validators.required],
+        email: ['', [Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}'), Validators.required]],
+      });
+      
 
   
     if(usuarioEditado){

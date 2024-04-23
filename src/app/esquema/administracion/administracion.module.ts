@@ -13,8 +13,6 @@ import { AumentarFontsDirective } from './directivas/aumentar-fonts.directive';
 
 
 
-
-
 @NgModule({
   declarations: [
     AdministracionComponent,
@@ -27,11 +25,9 @@ import { AumentarFontsDirective } from './directivas/aumentar-fonts.directive';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    CursosModule,
     MatButtonModule,
     UsuariosModule,
-    PipesModule
-
+    PipesModule,
     
   ],
   exports: [AdministracionComponent]

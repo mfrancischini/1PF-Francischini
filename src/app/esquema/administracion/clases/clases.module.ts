@@ -1,27 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CursosRoutingModule } from './cursos-routing.module';
-import { CursosComponent } from './cursos.component';
+
+import { ClasesRoutingModule } from './clases-routing.module';
+import { ClasesComponent } from './clases.component';
+import { ClasesFormComponent } from './componente/clases-form.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table';
-import { FormCursosComponent } from './componente/form-cursos.component';
 
 
 @NgModule({
   declarations: [
-    CursosComponent,
-    FormCursosComponent
+    ClasesComponent,
+    ClasesFormComponent
   ],
   imports: [
     CommonModule,
-    CursosRoutingModule,
+    ClasesRoutingModule,
     MatIconModule,
     MatTableModule,
     FormsModule,
@@ -32,6 +33,9 @@ import { FormCursosComponent } from './componente/form-cursos.component';
     MatSelectModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+  ],
+  exports: [
+    ClasesComponent
   ]
 })
-export class CursosModule { }
+export class ClasesModule { }

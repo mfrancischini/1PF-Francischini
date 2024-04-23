@@ -1,44 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { ICursos } from '../models';
+import { Observable, delay, of } from 'rxjs';
 
 
-
-export interface ICursos {
-  id: number;
-   nombre: string;
-   fecha_inicio: string;
-  fecha_fin: string;
-  duracion: string;
-   profesor: string;
-}
+const CURSOS_DB: ICursos[] = [
+  
+  { id_curso: 1, nombre_curso: 'Desarrollo Web', profesor: 'Leonardo Grapia', fecha_cursada: '2022-01-01', horario: '10:00 - 11:00' },];
 @Injectable({
   providedIn: 'root'
 })
 export class CursosService {
-  unsubscribe() {
-    this.cursos$.complete();
-    console.log("Se completo el observable");
+
+  obtenerCursos(): Observable<ICursos[]> {
+    return of(CURSOS_DB).pipe(delay(1000));
+
   }
-
-  private cursos: ICursos[];
-  private cursos$: Subject<ICursos[]>;
-  constructor() { 
-
-    this.cursos = [] ;
-    this.cursos$ = new Subject() 
- 
-  }
-
-    agregarCurso(Ccurso: ICursos){
-      this.cursos.push(Ccurso);
-      this.cursos$.next(this.cursos);
-    }
-
-
-    getCursos$(): Observable<ICursos[]>{
-
-      return this.cursos$.asObservable();
-    }
-
-
 }

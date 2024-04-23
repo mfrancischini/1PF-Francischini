@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CursoFormComponent } from './esquema/administracion/cursos/components/curso-form/curso-form.component';
-import { CursosComponent } from './esquema/administracion/cursos/cursos.component';
 
 const routes: Routes = [
   {
@@ -18,9 +16,10 @@ const routes: Routes = [
    loadChildren: () => import( './esquema/administracion/cursos/cursos.module').then(m => m.CursosModule)
   },
   {
-    path: 'forms',
-    loadChildren: () => import( './esquema/administracion/cursos/components/curso-form/curso-form.module').then(m => m.CursosFormModule)
-  }
+    path: 'clases',
+    loadChildren: () => import( './esquema/administracion/clases/clases.module').then(m => m.ClasesModule)}
+
+
 ];
 
 @NgModule({
