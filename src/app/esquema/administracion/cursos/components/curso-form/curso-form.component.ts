@@ -2,6 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CursosService } from '../../../servicios/cursos.service';
 
+
+
+export interface ICursos {
+  id: number;
+   nombre: string;
+   fecha_inicio: string;
+  fecha_fin: string;
+  duracion: string;
+   profesor: string;
+}
 @Component({
   selector: 'app-curso-form',
   templateUrl: './curso-form.component.html',

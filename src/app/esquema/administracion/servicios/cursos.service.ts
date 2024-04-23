@@ -8,13 +8,17 @@ export interface ICursos {
    nombre: string;
    fecha_inicio: string;
   fecha_fin: string;
- duracion: string;
+  duracion: string;
    profesor: string;
 }
 @Injectable({
   providedIn: 'root'
 })
 export class CursosService {
+  unsubscribe() {
+    this.cursos$.complete();
+    console.log("Se completo el observable");
+  }
 
   private cursos: ICursos[];
   private cursos$: Subject<ICursos[]>;

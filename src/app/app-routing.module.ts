@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CursoFormComponent } from './esquema/administracion/cursos/components/curso-form/curso-form.component';
+import { CursosComponent } from './esquema/administracion/cursos/cursos.component';
 
 const routes: Routes = [
   {
@@ -13,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'cursos',
-    loadChildren: () => import( './esquema/administracion/cursos/cursos.module').then(m => m.CursosModule)
+   loadChildren: () => import( './esquema/administracion/cursos/cursos.module').then(m => m.CursosModule)
   },
   {
     path: 'forms',

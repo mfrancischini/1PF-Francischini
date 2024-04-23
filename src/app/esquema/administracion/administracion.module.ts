@@ -28,7 +28,6 @@ import { AumentarFontsDirective } from './directivas/aumentar-fonts.directive';
     MatToolbarModule,
     MatIconModule,
     CursosModule,
-
     MatButtonModule,
     UsuariosModule,
     PipesModule

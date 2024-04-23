@@ -1,24 +1,70 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3" *ngFor="let curso of arrCursos">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-header-image"></div>
-          <h5 class="card-title">{{ curso.id }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Duración: {{ curso.id }}</h6> 
-        </div>
-      
-        <div class="card-body">
-          <p class="card-text">Profesor: {{ curso.profesor }}</p>
-          <p class="card-text">Inicio: {{ curso.fecha_inicio | date }}</p>
-          <p class="card-text">Final: {{ curso.fecha_fin| date }}</p>
-        </div> 
+    <ng-container *ngIf="arrCursos.length > 0; else noCursos">
+      <div class="col-md-3" *ngFor="let curso of arrCursos">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-header-image"></div>
+            <h5 class="card-title">Codigo : {{ curso.id }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Duración: {{ curso.id }}</h6> 
+          </div>
         
-        <div class="card-footer">
-          <button mat-button>VER MÁS</button>
- 
+          <div class="card-body color-card">
+            <p class="card-text">Curso: {{ curso.nombre }}</p>
+            <p class="card-text">Profesor: {{ curso.profesor }}</p>
+            <p class="card-text">Inicio: {{ curso.fecha_inicio | date }}</p>
+            <p class="card-text">Final: {{ curso.fecha_fin | date }}</p>
+          </div> 
+          
+          <div class="card-footer">
+            <button mat-button>VER MÁS</button>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
+    <ng-template #noCursos>
+      <div class="col-md-12">
+        <h3>No hay cursos disponibles</h3>
+      </div>
+    </ng-template>
   </div>
 </div>
+
+<!-- 
+
+<table mat-table [dataSource]="arrCursos" class="mat-elevation-z8">
+
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Curso </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fecha_inicio">
+    <th mat-header-cell *matHeaderCellDef> Fecha Inicio </th>
+    <td mat-cell *matCellDef="let element"> {{element.fecha_inicio}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="fecha_fin">
+    <th mat-header-cell *matHeaderCellDef> Fecha Fin </th>
+    <td mat-cell *matCellDef="let element"> {{element.fecha_fin}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="duracion">
+    <th mat-header-cell *matHeaderCellDef> Duracion </th>
+    <td mat-cell *matCellDef="let element"> {{element.duracion}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="profesor">
+    <th mat-header-cell *matHeaderCellDef> Profesor </th>
+    <td mat-cell *matCellDef="let element"> {{element.profesor}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->
