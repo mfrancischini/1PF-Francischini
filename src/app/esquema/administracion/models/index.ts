@@ -1,4 +1,4 @@
-export interface IUsuario {
+export interface IAlumnos {
     id: number;
     nombre: string;
     apellido: string;
@@ -23,3 +23,16 @@ export interface ICursos {
     fecha_cursada: string;
     horario: string;
 }
+
+export interface IUsuario {
+    id: number;
+    nombre: string;
+    email: string;
+    role: string;
+}
+
+
+export interface IDatosLogin {
+    username: string | null;
+    password: string | null;
+  }

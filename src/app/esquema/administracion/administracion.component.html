@@ -2,23 +2,34 @@
   <mat-drawer #drawer class="example-sidenav max-width-100" mode="side" opened="true">
     <div class="container">
       
-          <div class="row">
+      <div class="row"*ngIf="(_user$ | async)?.role === 'ADMIN'">
         <div class="col">
           <button mat-icon-button routerLink="alumnos"><mat-icon>group</mat-icon></button>Alumnos
         </div>
       </div>
-      <div class="row">
+      <div class="row"*ngIf="(_user$ | async)?.role === 'ADMIN'">
         <div class="col">
-          <button mat-icon-button routerLink="cursos"><mat-icon>menu_book</mat-icon></button>Cursos
+          <button mat-icon-button routerLink="cursos" ><mat-icon>menu_book</mat-icon></button>Cursos
          
         </div>
       </div>
 
-      <div class="row">
+      <div class="row"*ngIf="(_user$ | async)?.role === 'ADMIN'">
         <div class="col">
           <button mat-icon-button routerLink="clases"><mat-icon>school</mat-icon></button>Clases
          
         </div>
+   
+        
+      </div >
+   
+      <div class="row">
+        <div class="col">
+          <button mat-icon-button (click)="logout()"><mat-icon>logout</mat-icon></button>Logout
+         
+        </div>
+
+        
       </div >
 
     </div>  

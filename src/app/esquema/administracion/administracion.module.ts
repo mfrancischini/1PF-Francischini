@@ -10,26 +10,27 @@ import {MatButtonModule} from '@angular/material/button';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { PipesModule } from './pipes/pipes.module';
 import { AumentarFontsDirective } from './directivas/aumentar-fonts.directive';
+import { LoginModule } from "./login/login.module";
 
 
 
 @NgModule({
-  declarations: [
-    AdministracionComponent,
-    AumentarFontsDirective,
-    
-  ],
-  imports: [
-    CommonModule,
-    AdministracionRoutingModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    UsuariosModule,
-    PipesModule,
-    
-  ],
-  exports: [AdministracionComponent]
+    declarations: [
+        AdministracionComponent,
+        AumentarFontsDirective,
+    ],
+    exports: [AdministracionComponent],
+    imports: [
+        CommonModule,
+        AdministracionRoutingModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        UsuariosModule,
+        PipesModule,
+        LoginModule,
+        CursosModule
+    ]
 })
 export class AdministracionModule { }

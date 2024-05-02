@@ -3,10 +3,9 @@ import { IClases, ICursos } from '../models';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
-import { ClasesFormComponent } from '../clases/componente/clases-form.component';
-import { ClasesService } from '../servicios/clases.service';
 import { CursosService } from '../servicios/cursos.service';
 import { FormCursosComponent } from './componente/form-cursos.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cursos',
@@ -20,7 +19,7 @@ export class CursosComponent implements OnInit{
 
 
 cursos: ICursos[] = [];
-constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar, private cursosService: CursosService) { }
+constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar, private cursosService: CursosService, private http: HttpClient) { }
 
 
 ngOnInit(): void {
@@ -83,6 +82,7 @@ confirmarEliminacion(id: number) {
         icon: "success"
       });
       this.cursos = this.cursos.filter(curso => curso.id_curso !== id);
+  
       this.openSnackBar('Se elimino un nuevo curso')
     }
   });

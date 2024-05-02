@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IUsuario } from '../models';
+import { IAlumnos } from '../models';
 import { MatDialog } from '@angular/material/dialog';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -18,7 +18,7 @@ export class UsuariosComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nombreyapellido', 'curso', 'email', 'editar', 'borrar'];
 
 
-  usuarios: IUsuario[] = [];
+  usuarios: IAlumnos[] = [];
   constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar, private usuariosService: UsersService) { }
   ngOnInit(): void {
     //this.loading = true;
@@ -38,7 +38,7 @@ export class UsuariosComponent implements OnInit {
     });
   }
 
-  openDialog(usuarioEditado?: IUsuario): void {
+  openDialog(usuarioEditado?: IAlumnos): void {
     this.matDialog
       .open(UserFormComponent, {
         data: usuarioEditado,
