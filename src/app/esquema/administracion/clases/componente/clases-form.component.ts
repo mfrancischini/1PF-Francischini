@@ -11,12 +11,13 @@ import { IClases } from '../../models';
 })
 export class ClasesFormComponent {
   claseForm: FormGroup;
+  
 
   constructor(
     private formBuilder: FormBuilder,
     private matDialogRef: MatDialogRef<ClasesFormComponent>,private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) private claseEditada?: IClases) {
       this.claseForm = this.formBuilder.group({
-        id_clase: ['', [Validators.required]],
+       // id: ['', [Validators.required]],
         id_curso: ['', [Validators.required]],
         nombre_clase: ['', Validators.required],
         profesor: ['', Validators.required],

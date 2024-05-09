@@ -8,7 +8,7 @@ export interface IAlumnos {
 
 
 export interface IClases {
-    id_clase: number;
+    id: number;
     id_curso: number;
     nombre_clase: string;
     profesor: string;
@@ -17,7 +17,7 @@ export interface IClases {
 }
 
 export interface ICursos {
-    id_curso: number;
+    id: number;
     nombre_curso: string;
     profesor: string;
     fecha_cursada: string;

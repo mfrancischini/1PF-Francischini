@@ -24,7 +24,6 @@ import { LoginRoutingModule } from './login-routing.module';
     MatTableModule,
     MatDialogModule,
     MatButtonModule,
-    MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,

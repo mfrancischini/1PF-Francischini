@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { FormCursosComponent } from './componente/form-cursos.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { FormCursosComponent } from './componente/form-cursos.component';
     MatSelectModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    MatCardModule
   ]
 })
 export class CursosModule { }

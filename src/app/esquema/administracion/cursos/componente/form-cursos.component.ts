@@ -18,7 +18,7 @@ export class FormCursosComponent {
     private formBuilder: FormBuilder,
     private matDialogRef: MatDialogRef<ClasesFormComponent>,private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) private cursoEditado?: ICursos) {
       this.cursoForm = this.formBuilder.group({
-        id_curso: ['', [Validators.required]],
+       // id: ['', [Validators.required]],
         nombre_curso: ['', [Validators.required]],
         profesor: ['', Validators.required],
         fecha_cursada: ['', Validators.required],

@@ -1,102 +1,149 @@
 {
-    "students": [
-        { "id": 1, "nombre": "Mariano", "apellido": "Francischini", "curso": "Diseño Web", "email": "mariano@example.com" },
-        { "id": 2, "nombre": "Ana", "apellido": "González", "curso": "Programación Java", "email": "ana@example.com" },
-        { "id": 3, "nombre": "Carlos", "apellido": "Martínez", "curso": "Desarrollo Frontend", "email": "carlos@example.com" },
-        { "id": 4, "nombre": "Lucía", "apellido": "Fernández", "curso": "Bases de Datos", "email": "lucia@example.com" },
-        { "id": 5, "nombre": "Pedro", "apellido": "López", "curso": "Diseño Web", "email": "pedro@example.com" },
-        { "id": 6, "nombre": "Laura", "apellido": "Rodríguez", "curso": "Desarrollo Frontend", "email": "laura@example.com" },
-        { "id": 7, "nombre": "Diego", "apellido": "Sánchez", "curso": "Desarrollo Frontend", "email": "diego@example.com" },
-        { "id": 8, "nombre": "María", "apellido": "Díaz", "curso": "Programación Java", "email": "maria@example.com" },
-        { "id": 9, "nombre": "Sofía", "apellido": "Gómez", "curso": "Desarrollo Frontend", "email": "sofia@example.com" },
-        { "id": 10, "nombre": "Juan", "apellido": "Pérez", "curso": "Diseño Web", "email": "juan@example.com" }
-      ]
-        , 
-    "courses": [
-        {
-          "id_curso": 1,
-          "nombre_curso": "Desarrollo Web",
-          "profesor": "Leonardo Grapia",
-          "fecha_cursada": "2022-01-01",
-          "horario": "10:00 - 11:00"
-        },
-        {
-          "id_curso": 2,
-          "nombre_curso": "Programación Java",
-          "profesor": "María Rodríguez",
-          "fecha_cursada": "2022-01-02",
-          "horario": "11:00 - 12:00"
-        },
-        {
-          "id_curso": 3,
-          "nombre_curso": "Diseño UX/UI",
-          "profesor": "Luis Martínez",
-          "fecha_cursada": "2022-01-03",
-          "horario": "12:00 - 13:00"
-        },
-        {
-          "id_curso": 4,
-          "nombre_curso": "Bases de Datos",
-          "profesor": "Ana García",
-          "fecha_cursada": "2022-01-04",
-          "horario": "13:00 - 14:00"
-        },
-        {
-          "id_curso": 5,
-          "nombre_curso": "Desarrollo Frontend",
-          "profesor": "Carlos López",
-          "fecha_cursada": "2022-01-05",
-          "horario": "14:00 - 15:00"
-        },
-        {
-          "id_curso": 6,
-          "nombre_curso": "Desarrollo Backend",
-          "profesor": "Laura Fernández",
-          "fecha_cursada": "2022-01-06",
-          "horario": "15:00 - 16:00"
-        },
-        {
-          "id_curso": 7,
-          "nombre_curso": "Introducción a la Programación",
-          "profesor": "Diego Sánchez",
-          "fecha_cursada": "2022-01-07",
-          "horario": "16:00 - 17:00"
-        },
-        {
-          "id_curso": 8,
-          "nombre_curso": "Ciberseguridad",
-          "profesor": "María Díaz",
-          "fecha_cursada": "2022-01-08",
-          "horario": "17:00 - 18:00"
-        },
-        {
-          "id_curso": 9,
-          "nombre_curso": "Machine Learning",
-          "profesor": "Sofía Gómez",
-          "fecha_cursada": "2022-01-09",
-          "horario": "18:00 - 19:00"
-        },
-        {
-          "id_curso": 10,
-          "nombre_curso": "Diseño Web Avanzado",
-          "profesor": "Carolina Suárez",
-          "fecha_cursada": "2022-01-10",
-          "horario": "19:00 - 20:00"
-        }
-      ]
-        ,
-    "classes": [
-        { "id_clase": 1, "id_curso": 1, "nombre_clase": "Clase 1", "profesor": "Gabriel García", "fecha_cursada": "2022-01-01", "horario": "10:00 - 11:00" },
-        { "id_clase": 2, "id_curso": 2, "nombre_clase": "Clase 2", "profesor": "María Martínez", "fecha_cursada": "2022-01-02", "horario": "11:00 - 12:00" },
-        { "id_clase": 3, "id_curso": 3, "nombre_clase": "Clase 3", "profesor": "Javier López", "fecha_cursada": "2022-01-03", "horario": "12:00 - 13:00" },
-        { "id_clase": 4, "id_curso": 4, "nombre_clase": "Clase 4", "profesor": "Laura Rodríguez", "fecha_cursada": "2022-01-04", "horario": "13:00 - 14:00" },
-        { "id_clase": 5, "id_curso": 5, "nombre_clase": "Clase 5", "profesor": "Carlos Fernández", "fecha_cursada": "2022-01-05", "horario": "14:00 - 15:00" },
-        { "id_clase": 6, "id_curso": 6, "nombre_clase": "Clase 6", "profesor": "Lucía Pérez", "fecha_cursada": "2022-01-06", "horario": "15:00 - 16:00" },
-        { "id_clase": 7, "id_curso": 7, "nombre_clase": "Clase 7", "profesor": "Diego Sánchez", "fecha_cursada": "2022-01-07", "horario": "16:00 - 17:00" },
-        { "id_clase": 8, "id_curso": 8, "nombre_clase": "Clase 8", "profesor": "Ana Gómez", "fecha_cursada": "2022-01-08", "horario": "17:00 - 18:00" },
-        { "id_clase": 9, "id_curso": 9, "nombre_clase": "Clase 9", "profesor": "Pedro López", "fecha_cursada": "2022-01-09", "horario": "18:00 - 19:00" },
-        { "id_clase": 10, "id_curso": 10, "nombre_clase": "Clase 10", "profesor": "Sofía Fernández", "fecha_cursada": "2022-01-10", "horario": "19:00 - 20:00" }
-      ]
-      
-    
+  "students": [
+    {
+      "id": "2",
+      "nombre": "Ana",
+      "apellido": "González",
+      "curso": "Programación Java",
+      "email": "ana@example.com"
+    },
+    {
+      "id": "3",
+      "nombre": "Carlos",
+      "apellido": "Martínez",
+      "curso": "Desarrollo Frontend",
+      "email": "carlos@example.com"
+    },
+    {
+      "id": "4",
+      "nombre": "Lucía",
+      "apellido": "Fernández",
+      "curso": "Bases de Datos",
+      "email": "lucia@example.com"
+    },
+    {
+      "id": "5",
+      "nombre": "Pedro",
+      "apellido": "López",
+      "curso": "Diseño Web",
+      "email": "pedro@example.com"
+    },
+    {
+      "id": "6",
+      "nombre": "Laura",
+      "apellido": "Rodríguez",
+      "curso": "Desarrollo Frontend",
+      "email": "laura@example.com"
+    },
+    {
+      "id": "7",
+      "nombre": "Diego",
+      "apellido": "Sánchez",
+      "curso": "Desarrollo Frontend",
+      "email": "diego@example.com"
+    },
+    {
+      "id": "8",
+      "nombre": "María",
+      "apellido": "Díaz",
+      "curso": "Programación Java",
+      "email": "maria@example.com"
+    },
+    {
+      "id": "9",
+      "nombre": "Sofía",
+      "apellido": "Gómez",
+      "curso": "Desarrollo Frontend",
+      "email": "sofia@example.com"
+    },
+    {
+      "id": "10",
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "curso": "Diseño Web",
+      "email": "juan@example.com"
+    }
+  ],
+  "courses": [
+    {
+      "id": "2",
+      "nombre_curso": "Diseño UX/UI",
+      "profesor": "Luis Martínez",
+      "fecha_cursada": "2022-01-03",
+      "horario": "12:00 - 13:00"
+    },
+    {
+      "id": "3",
+      "nombre_curso": "Diseño UX/UI",
+      "profesor": "Luis Martínez",
+      "fecha_cursada": "2022-01-03",
+      "horario": "12:00 - 13:00"
+    }
+  ],
+  "classes": [
+    {
+      "id": "2",
+      "id_curso": 2,
+      "nombre_clase": "Clase 2",
+      "profesor": "María Martínez",
+      "fecha_cursada": "2022-01-02",
+      "horario": "11:00 - 12:00"
+    },
+    {
+      "id": "3",
+      "id_curso": 3,
+      "nombre_clase": "Clase 3",
+      "profesor": "Javier López",
+      "fecha_cursada": "2022-01-03",
+      "horario": "12:00 - 13:00"
+    },
+    {
+      "id": "4",
+      "id_curso": 4,
+      "nombre_clase": "Clase 4",
+      "profesor": "Laura Rodríguez",
+      "fecha_cursada": "2022-01-04",
+      "horario": "13:00 - 14:00"
+    },
+    {
+      "id": "5",
+      "id_curso": 5,
+      "nombre_clase": "Clase 5",
+      "profesor": "Carlos Fernández",
+      "fecha_cursada": "2022-01-05",
+      "horario": "14:00 - 15:00"
+    },
+    {
+      "id": "6",
+      "id_curso": 6,
+      "nombre_clase": "Clase 6",
+      "profesor": "Lucía Pérez",
+      "fecha_cursada": "2022-01-06",
+      "horario": "15:00 - 16:00"
+    },
+    {
+      "id": "7",
+      "id_curso": 7,
+      "nombre_clase": "Clase 7",
+      "profesor": "Diego Sánchez",
+      "fecha_cursada": "2022-01-07",
+      "horario": "16:00 - 17:00"
+    },
+    {
+      "id": "9",
+      "id_curso": 9,
+      "nombre_clase": "Clase 9",
+      "profesor": "Pedro López",
+      "fecha_cursada": "2022-01-09",
+      "horario": "18:00 - 19:00"
+    },
+    {
+      "id": "10",
+      "id_curso": 10,
+      "nombre_clase": "Clase 10",
+      "profesor": "Sofía Fernández",
+      "fecha_cursada": "2022-01-10",
+      "horario": "19:00 - 20:00"
+    }
+  ]
 }

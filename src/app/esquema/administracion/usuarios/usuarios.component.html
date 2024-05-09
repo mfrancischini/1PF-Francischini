@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-end">
+ <!-- <div class="d-flex justify-content-end">
   <button mat-button (click)="openDialog()"><mat-icon>add</mat-icon></button>
 
 </div>
@@ -42,4 +42,60 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  -->
+  <div class="d-flex justify-content-end">
+    <button mat-button (click)="openDialog()"><mat-icon>add</mat-icon></button>
+  
+  </div>
 
+  
+  <div class="example-container mat-elevation-z8">
+  
+    <mat-table [dataSource]="usuarios" matSort>
+  
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="id"> {{element.id}} </mat-cell>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="nombreyapellido">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre y Apellido </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="progress"> {{element.nombre | concatNameApellido:element.apellido}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="name"> {{element.email}} </mat-cell>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="curso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Curso </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="curso"> {{element.curso}} </mat-cell>
+      </ng-container>
+
+      
+    <ng-container matColumnDef="editar">
+      <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-icon-button (click)="openDialog(element)"><mat-icon>edit</mat-icon></button>
+      </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="borrar">
+      <mat-header-cell *matHeaderCellDef> Borrar </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-icon-button (click)="confirmarEliminacion(element.id)"><mat-icon>delete</mat-icon></button>
+      </mat-cell>
+    </ng-container>
+
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+  
+
+  </div>
+  
+  

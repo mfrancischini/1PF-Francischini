@@ -37,6 +37,5 @@ export class LoginComponent implements OnInit {
 
   logout(): void {
     this.loguin.logout();
-    // Redirige a la página de inicio de sesión u otras acciones después del cierre de sesión
   }
 }
