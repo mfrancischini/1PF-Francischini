@@ -13,12 +13,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { FormCursosComponent } from './componente/form-cursos.component';
 import { MatCardModule } from '@angular/material/card';
+import { CursoDetalleComponent } from './pages/cursos-detalle.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
   declarations: [
     CursosComponent,
-    FormCursosComponent
+    FormCursosComponent,
+    CursoDetalleComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +36,8 @@ import { MatCardModule } from '@angular/material/card';
     MatSelectModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ]
 })
 export class CursosModule { }

@@ -1,19 +1,26 @@
-<h2 mat-dialog-title>Crear una Clase</h2>
+<h2 mat-dialog-title>Crear una Inscripcion</h2>
 <div mat-dialog-content>
     <form   [formGroup]="claseForm">
       <div class="row">
 
         <div class="col-6">
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Id Curso</mat-label>
-            <input formControlName="id_curso" matInput />
+          <mat-form-field>
+            <mat-label>Selecciona un Alumno</mat-label>
+            <mat-select formControlName="id_alumno">
+              <mat-option *ngFor="let alumno of alumnosCursos" [value]="alumno.id">
+            {{alumno.nombre}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
-       
         <div class="col-6">
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Clase</mat-label>
-            <input formControlName="nombre_clase" matInput />
+          <mat-form-field>
+            <mat-label>Selecciona un Curso</mat-label>
+            <mat-select formControlName="id_curso">
+              <mat-option *ngFor="let curso of cursos" [value]="curso.id">
+            {{curso.nombre_curso}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
     </div>

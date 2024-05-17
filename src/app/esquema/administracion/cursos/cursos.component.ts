@@ -1,14 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IClases, ICursos } from '../models';
+import { ICursos, IInscripciones } from '../models';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
-import { ClasesFormComponent } from '../clases/componente/clases-form.component';
-import { ClasesService } from '../servicios/clases.service';
 import { CursosService } from '../servicios/cursos.service';
 import { FormCursosComponent } from './componente/form-cursos.component';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { InscrpcionesService } from '../servicios/inscripciones.service';
 
 @Component({
   selector: 'app-cursos',
@@ -19,7 +18,7 @@ export class CursosComponent implements OnInit , OnDestroy{
 
   displayedColumns: string[] = ['id', 'nombre_curso', 'profesor', 'fecha_cursada', 'horario', 'editar', 'borrar'];
 
-
+ inscripciones: IInscripciones[] = [];
 cursos: ICursos[] = [];
 cursosSubscription: Subscription | undefined;
 
@@ -33,6 +32,8 @@ constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar, privat
 
 
 ngOnInit(): void {
+
+
   this.cursosSubscription = this.cursosService.obtenerCursos().subscribe({
     next: (cursos) => {
       console.log('next: ', cursos);
@@ -48,14 +49,13 @@ ngOnInit(): void {
   });
 }
 
+
+
 openDialog(cursoEditado?: ICursos): void {
   const dialogRef = this.matDialog.open(FormCursosComponent, {
     data: cursoEditado,
   });
-
-  const dialogRefcursos = this.matDialog.open(ClasesFormComponent, {
-    data: { cursos: this.cursos } // Asegúrate de que 'cursos' esté presente en el objeto 'data'
-  });
+ 
 
   dialogRef.afterClosed().subscribe((resultado) => {
     if (resultado) {
@@ -74,6 +74,7 @@ openDialog(cursoEditado?: ICursos): void {
       } else {
         this.http.post<any>(url, resultado).subscribe(
           (data) => {
+            
             this.cursos = [...this.cursos, data];
           },
           (error) => {
@@ -92,7 +93,7 @@ openSnackBar(message: string) {
   this._snackBar.open(message, undefined, { duration: 2000, });
 }
 
-confirmarEliminacion(id: number) {
+confirmarEliminacion(id: string) {
   Swal.fire({
     title: "ELIMINAR",
     text: "¿Está seguro de eliminar el curso?",

@@ -1,46 +1,18 @@
 {
   "students": [
     {
-      "id": "2",
-      "nombre": "Ana",
-      "apellido": "González",
-      "curso": "Programación Java",
-      "email": "ana@example.com"
-    },
-    {
-      "id": "3",
-      "nombre": "Carlos",
-      "apellido": "Martínez",
-      "curso": "Desarrollo Frontend",
-      "email": "carlos@example.com"
-    },
-    {
-      "id": "4",
-      "nombre": "Lucía",
-      "apellido": "Fernández",
-      "curso": "Bases de Datos",
-      "email": "lucia@example.com"
-    },
-    {
-      "id": "5",
-      "nombre": "Pedro",
-      "apellido": "López",
-      "curso": "Diseño Web",
-      "email": "pedro@example.com"
-    },
-    {
-      "id": "6",
       "nombre": "Laura",
       "apellido": "Rodríguez",
       "curso": "Desarrollo Frontend",
-      "email": "laura@example.com"
+      "email": "laura@example.com",
+      "id": "6"
     },
     {
-      "id": "7",
-      "nombre": "Diego",
+      "nombre": "Diegos",
       "apellido": "Sánchez",
       "curso": "Desarrollo Frontend",
-      "email": "diego@example.com"
+      "email": "diego@example.com",
+      "id": "7"
     },
     {
       "id": "8",
@@ -50,18 +22,11 @@
       "email": "maria@example.com"
     },
     {
-      "id": "9",
-      "nombre": "Sofía",
-      "apellido": "Gómez",
-      "curso": "Desarrollo Frontend",
-      "email": "sofia@example.com"
-    },
-    {
-      "id": "10",
-      "nombre": "Juan",
-      "apellido": "Pérez",
+      "id": "c898",
+      "nombre": "mariano",
+      "apellido": "prueba",
       "curso": "Diseño Web",
-      "email": "juan@example.com"
+      "email": "mfrancischini@easycommerce.tech"
     }
   ],
   "courses": [
@@ -73,77 +38,44 @@
       "horario": "12:00 - 13:00"
     },
     {
-      "id": "3",
-      "nombre_curso": "Diseño UX/UI",
+      "nombre_curso": "Angular",
       "profesor": "Luis Martínez",
       "fecha_cursada": "2022-01-03",
-      "horario": "12:00 - 13:00"
+      "horario": "12:00 - 13:00",
+      "id": "3"
+    },
+    {
+      "id": "6eae",
+      "nombre_curso": "React JS",
+      "profesor": "Maximiliano",
+      "fecha_cursada": "2024-06-24",
+      "horario": "18"
     }
   ],
   "classes": [
     {
-      "id": "2",
-      "id_curso": 2,
-      "nombre_clase": "Clase 2",
-      "profesor": "María Martínez",
-      "fecha_cursada": "2022-01-02",
-      "horario": "11:00 - 12:00"
+      "id": "e325",
+      "id_alumno": "6",
+      "id_curso": "6eae",
+      "profesor": "dsfdsfs",
+      "fecha_cursada": "1",
+      "horario": "1"
     },
     {
-      "id": "3",
-      "id_curso": 3,
-      "nombre_clase": "Clase 3",
-      "profesor": "Javier López",
-      "fecha_cursada": "2022-01-03",
-      "horario": "12:00 - 13:00"
+      "id": "f083",
+      "id_alumno": "7",
+      "id_curso": "2",
+      "profesor": "fadffd",
+      "fecha_cursada": "1",
+      "horario": "1"
     },
     {
-      "id": "4",
-      "id_curso": 4,
-      "nombre_clase": "Clase 4",
-      "profesor": "Laura Rodríguez",
-      "fecha_cursada": "2022-01-04",
-      "horario": "13:00 - 14:00"
-    },
-    {
-      "id": "5",
-      "id_curso": 5,
-      "nombre_clase": "Clase 5",
-      "profesor": "Carlos Fernández",
-      "fecha_cursada": "2022-01-05",
-      "horario": "14:00 - 15:00"
-    },
-    {
-      "id": "6",
-      "id_curso": 6,
-      "nombre_clase": "Clase 6",
-      "profesor": "Lucía Pérez",
-      "fecha_cursada": "2022-01-06",
-      "horario": "15:00 - 16:00"
-    },
-    {
-      "id": "7",
-      "id_curso": 7,
-      "nombre_clase": "Clase 7",
-      "profesor": "Diego Sánchez",
-      "fecha_cursada": "2022-01-07",
-      "horario": "16:00 - 17:00"
-    },
-    {
-      "id": "9",
-      "id_curso": 9,
-      "nombre_clase": "Clase 9",
-      "profesor": "Pedro López",
-      "fecha_cursada": "2022-01-09",
-      "horario": "18:00 - 19:00"
-    },
-    {
-      "id": "10",
-      "id_curso": 10,
-      "nombre_clase": "Clase 10",
-      "profesor": "Sofía Fernández",
-      "fecha_cursada": "2022-01-10",
-      "horario": "19:00 - 20:00"
+      "id": "ea16",
+      "id_alumno": "c898",
+      "id_curso": "3",
+      "profesor": "asas",
+      "fecha_cursada": "1",
+      "horario": "1"
     }
   ]
 }

@@ -1,0 +1,26 @@
+<div *ngIf="loading">Cargando...</div>
+<div *ngIf="!loading">
+  <div *ngIf="curso">
+    <h2>Detalles del Curso:</h2>
+    <p><strong>Id:</strong> {{ curso.id }}</p>
+    <p><strong>Nombre del Curso:</strong> {{ curso.nombre_curso }}</p>
+    <p><strong>Profesor:</strong> {{ curso.profesor }}</p>
+    <p><strong>Fecha de Inicio:</strong> {{ curso.fecha_cursada }}</p>
+    <p><strong>Horario:</strong> {{ curso.horario }}</p>
+
+    <h2>Alumnos Inscritos:</h2>
+    <ul>
+      <li *ngFor="let alumno of getAlumnosNombresPorCurso(curso.id)">
+        {{ alumno.nombre }} - 
+        <button mat-icon-button (click)="eliminarInscripcionById(alumno.id, curso.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </li>
+    </ul>
+    
+  </div>
+
+  <div *ngIf="(!curso && !alumnos) || (alumnos && alumnos.length === 0)">
+    <p>No se encontraron detalles del curso o de la inscripción del alumno.</p>
+  </div>
+</div>

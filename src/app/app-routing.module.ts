@@ -25,9 +25,9 @@ const routes: Routes = [
    loadChildren: () => import( './esquema/administracion/login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'clases',
+    path: 'inscripciones',
     canActivate: [autenticacionGuard],
-    loadChildren: () => import( './esquema/administracion/clases/clases.module').then(m => m.ClasesModule)}
+    loadChildren: () => import( './esquema/administracion/inscripciones/inscripciones.module').then(m => m.InscripcionesModule)}
     ,
     { 
       path: '**',

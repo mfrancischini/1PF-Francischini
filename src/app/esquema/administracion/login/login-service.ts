@@ -6,7 +6,7 @@ import { IUsuario, IDatosLogin } from '../models';
 @Injectable({ providedIn: 'root' })
 export class LoginService {
   private MOCK_AUTH_USER: IUsuario = {
-    id: 1,
+    id: "1",
     nombre: 'mariano',
     email: 'mariano@mail.com',
     role: 'ADMIN',

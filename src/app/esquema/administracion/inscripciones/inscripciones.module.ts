@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ClasesRoutingModule } from './clases-routing.module';
-import { ClasesComponent } from './clases.component';
-import { ClasesFormComponent } from './componente/clases-form.component';
+import { ClasesRoutingModule } from './inscripciones-routing.module';
+import { InscripcionesComponent } from './inscripciones.component';
+import { InscripcionFormComponent } from './componente/inscripciones-form.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,8 +17,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
-    ClasesComponent,
-    ClasesFormComponent
+    InscripcionesComponent,
+    InscripcionFormComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +35,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSnackBarModule,
   ],
   exports: [
-    ClasesComponent
+    InscripcionesComponent
   ]
 })
-export class ClasesModule { }
+export class InscripcionesModule { }

@@ -1,3 +1,6 @@
+
+<h2>Cursos</h2>
+<hr>
 <div class="d-flex justify-content-end">
     <button mat-button (click)="openDialog()"><mat-icon>add</mat-icon></button>
   
@@ -17,15 +20,26 @@
             <p><strong>Fecha de Inicio:</strong> {{ curso.fecha_cursada }}</p>
             <p><strong>Horario:</strong> {{ curso.horario }}</p>
           </mat-card-content>
+
           <mat-card-actions>
             <button mat-icon-button (click)="openDialog(curso)">
               <mat-icon>edit</mat-icon>
             </button>
+
+       
+            <button [routerLink]="curso.id" mat-icon-button color="primary">
+              <mat-icon>visibility</mat-icon>
+            </button>
+
+
             <button mat-icon-button (click)="confirmarEliminacion(curso.id)">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-card-actions>
         </mat-card>
+
+
+        
       </div>
     </ng-container>
   </div>

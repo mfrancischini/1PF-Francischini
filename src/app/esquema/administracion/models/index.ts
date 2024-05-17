@@ -1,31 +1,31 @@
 export interface IAlumnos {
-    id: number;
+    id: string;
     nombre: string;
     apellido: string;
     curso: string;
     email: string;
 }
 
-
-export interface IClases {
-    id: number;
-    id_curso: number;
-    nombre_clase: string;
-    profesor: string;
-    fecha_cursada: string;
-    horario: string;
-}
-
 export interface ICursos {
-    id: number;
+    id: string;
     nombre_curso: string;
     profesor: string;
     fecha_cursada: string;
     horario: string;
 }
+export interface IInscripciones {
+    id: string;
+    id_alumno: string;
+    id_curso: string;
+    profesor: string;
+    fecha_cursada: string;
+    horario: string;
+}
+
+
 
 export interface IUsuario {
-    id: number;
+    id: string;
     nombre: string;
     email: string;
     role: string;
@@ -35,4 +35,12 @@ export interface IUsuario {
 export interface IDatosLogin {
     username: string | null;
     password: string | null;
+  }
+
+  export interface ICreateAlumnosPayload{
+    id: string;
+    nombre: string;
+    apellido: string;
+    curso: string;
+    email: string;
   }

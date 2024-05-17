@@ -13,6 +13,12 @@ import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { PipesModule } from '../pipes/pipes.module';
+import { EffectsModule } from '@ngrx/effects';
+import { UsuarioEffects } from './store/usuario.effects';
+import { StoreModule } from '@ngrx/store';
+import { usuarioFeature } from './store/usuario.reducer';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +28,7 @@ import { PipesModule } from '../pipes/pipes.module';
   imports: [
     CommonModule,
     UsuariosRoutingModule,
+    MatProgressSpinnerModule,
     MatTableModule,
     MatDialogModule,
     MatButtonModule,
@@ -31,7 +38,9 @@ import { PipesModule } from '../pipes/pipes.module';
     MatSelectModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    PipesModule
+    PipesModule,
+    StoreModule.forFeature(usuarioFeature),
+    EffectsModule.forFeature([UsuarioEffects])
   ],
   exports: [
     UsuariosComponent
