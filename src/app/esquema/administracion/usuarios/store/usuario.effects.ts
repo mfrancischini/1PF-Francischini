@@ -14,7 +14,6 @@ export class UsuarioEffects {
 
       ofType(UsuarioActions.loadUsuarios),
       concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
         this.usersService.getUsuarios().pipe(
           //Todo OK
           map(data => UsuarioActions.loadUsuariosSuccess({ data })),

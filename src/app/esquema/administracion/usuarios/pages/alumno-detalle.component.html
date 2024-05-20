@@ -1,0 +1,27 @@
+<div *ngIf="loading">Cargando...</div>
+<div *ngIf="!loading && alumno">
+  <h2>Detalles del Alumno</h2>
+  <p><strong>Id:</strong> {{ alumno.id }}</p>
+  <p><strong>Nombre:</strong> {{ alumno.nombre }}</p>
+  <p><strong>Apellido:</strong> {{ alumno.apellido }}</p>
+  <p><strong>Email:</strong> {{ alumno.email }}</p>
+</div>
+<div *ngIf="!loading && !alumno">
+  <p>No se encontró el alumno.</p>
+</div>
+<div *ngIf="cursos.length > 0">
+  <h2>Cursos del alumno</h2>
+  <ul>
+    <li *ngFor="let curso of cursos">
+      <p><strong>Id del Curso:</strong> {{ curso.id }}</p>
+      <p><strong>Nombre del Curso:</strong> {{ curso.nombre_curso }}</p>
+      <p><strong>Profesor:</strong> {{ curso.profesor }}</p>
+      <button mat-icon-button (click)="eliminarInscripcionById(alumno?.id, curso.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </li>
+  </ul>
+</div>
+<div *ngIf="!loading && cursos.length === 0">
+  <p>El alumno no está inscrito en ningún curso.</p>
+</div>

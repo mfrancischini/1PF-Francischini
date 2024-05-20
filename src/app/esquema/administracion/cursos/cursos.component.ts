@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ICursos, IInscripciones } from '../models';
+import { ICursos, IInscripciones, IUsuario } from '../models';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
 import { CursosService } from '../servicios/cursos.service';
 import { FormCursosComponent } from './componente/form-cursos.component';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { InscrpcionesService } from '../servicios/inscripciones.service';
+import { LoginService } from '../login/login-service';
 
 @Component({
   selector: 'app-cursos',
@@ -15,25 +16,35 @@ import { InscrpcionesService } from '../servicios/inscripciones.service';
   styleUrl: './cursos.component.scss'
 })
 export class CursosComponent implements OnInit , OnDestroy{
+  _user$: Observable<IUsuario | null>;
+  authUserSinPipe: IUsuario | null = null;
 
   displayedColumns: string[] = ['id', 'nombre_curso', 'profesor', 'fecha_cursada', 'horario', 'editar', 'borrar'];
 
  inscripciones: IInscripciones[] = [];
 cursos: ICursos[] = [];
 cursosSubscription: Subscription | undefined;
+userSuscription?: Subscription;
 
-constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar, private cursosService: CursosService, private http: HttpClient) { }
+constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar, private loguin : LoginService,private cursosService: CursosService, private http: HttpClient) { 
+
+  this._user$ = this.loguin.authUser$;
+}
   ngOnDestroy(): void {
     if (this.cursosSubscription) {
       this.cursosSubscription.unsubscribe();
-      console.log("Me destruyo");
+      
     }
   }
 
 
 ngOnInit(): void {
 
-
+  this.userSuscription = this.loguin.authUser$.subscribe({
+    next: (user) => {
+      this.authUserSinPipe = user;
+    },
+  });
   this.cursosSubscription = this.cursosService.obtenerCursos().subscribe({
     next: (cursos) => {
       console.log('next: ', cursos);

@@ -1,8 +1,8 @@
 
 <h2>Inscripciones</h2>
 <hr>
-<div class="d-flex justify-content-end">
-    <button mat-button (click)="openDialog()"><mat-icon>add</mat-icon></button>
+<div class="d-flex justify-content-end"  *ngIf="(_user$ | async)?.role === 'ADMIN'">
+    <button mat-button (click)="openDialog()"><mat-icon>add</mat-icon>Crear</button>
   
   </div>
   
@@ -14,19 +14,19 @@
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
   
-      <ng-container matColumnDef="id_curso">
+      <ng-container matColumnDef="courseId">
         <th mat-header-cell *matHeaderCellDef> Codigo Curso </th>
         <td mat-cell *matCellDef="let element">
-          {{ getCursoNombre(element.id_curso) }}    
+          {{ getCursoNombre(element.courseId) }}    
         </td>
   
       </ng-container>
    
       
-      <ng-container matColumnDef="id_alumno">
+      <ng-container matColumnDef="studentId">
         <th mat-header-cell *matHeaderCellDef> Nombre Alumno </th>
         <td mat-cell *matCellDef="let element"> 
-          {{ getAlumnoNombre(element.id_alumno) }}  
+          {{ getAlumnoNombre(element.studentId) }}  
         </td>
       </ng-container>
   
@@ -49,7 +49,7 @@
   
       <ng-container matColumnDef="editar">
         <th mat-header-cell *matHeaderCellDef> Editar </th>
-        <td mat-cell *matCellDef="let element"><button mat-icon-button (click)="openDialog(element)"><mat-icon>edit</mat-icon></button>
+        <td mat-cell *matCellDef="let element"><button mat-icon-button (click)="openDialog(element)"  *ngIf="(_user$ | async)?.role === 'ADMIN'"><mat-icon>edit</mat-icon></button>
         </td>
       </ng-container>
       
@@ -57,7 +57,7 @@
       
       <ng-container matColumnDef="borrar">
         <th mat-header-cell *matHeaderCellDef> Borrar </th>
-        <td mat-cell *matCellDef="let element"><button mat-icon-button (click)="confirmarEliminacion(element.id)"><mat-icon>delete</mat-icon></button>
+        <td mat-cell *matCellDef="let element"><button mat-icon-button (click)="confirmarEliminacion(element.id)"  *ngIf="(_user$ | async)?.role === 'ADMIN'"><mat-icon>delete</mat-icon></button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -2,6 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from './login-service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { loginActions } from './store/login.actions';
+import { loginUser } from './store/login.selectors';
+import { IUsuario } from '../models';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +17,10 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup; 
   username: string | undefined;
   password: string | undefined;
+
+  loginSuscription?: Subscription;    
   constructor(private fb: FormBuilder, private loguin:LoginService,private router: Router,
+    private store: Store
   ) {
     this.loginForm = this.fb.group({ 
       username: ['', Validators.required],
@@ -20,10 +28,21 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.loginSuscription?.unsubscribe();
   }
 
+  ngOnInit(): void {
+   this.loginSuscription = this.store.select(loginUser).subscribe({
+      next: (user) => {
+        if (user) {
+       
+          this.router.navigate(['alumnos']);
+        }
+      }
+    });
+  }
+  
 
 
   login() {
@@ -31,7 +50,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
     } else {
-      this.loguin.login(this.loginForm.getRawValue());
+     // this.loguin.login(this.loginForm.getRawValue());
+     this.store.dispatch(loginActions.login({data: this.loginForm.getRawValue()}));
     }
   }
 
@@ -39,3 +59,7 @@ export class LoginComponent implements OnInit {
     this.loguin.logout();
   }
 }
+function next(value: IUsuario | null): void {
+  throw new Error('Function not implemented.');
+}
+

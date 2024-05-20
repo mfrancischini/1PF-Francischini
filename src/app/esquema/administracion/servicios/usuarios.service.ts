@@ -27,6 +27,10 @@ export class UsersService {
   updateAlumnos(id: string, payload: ICreateAlumnosPayload): Observable<IAlumnos> {
     return this.http.put<IAlumnos>(`http://localhost:3000/students/${id}`, payload);
   }
+
+  getUsuarioById(id: string): Observable<IAlumnos> {
+    return this.http.get<IAlumnos>(`http://localhost:3000/students/${id}`)
+  }
   
 }
 

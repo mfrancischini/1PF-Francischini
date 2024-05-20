@@ -1,14 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IAlumnos, ICursos, IInscripciones } from '../models';
+import { IAlumnos, ICursos, IInscripciones, IUsuario } from '../models';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { InscrpcionesService } from '../servicios/inscripciones.service';
 import Swal from 'sweetalert2';
 import { InscripcionFormComponent } from './componente/inscripciones-form.component';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CursosService } from '../servicios/cursos.service';
 import { UsersService } from '../servicios/usuarios.service';
+import { LoginService } from '../login/login-service';
 
 @Component({
   selector: 'app-inscripciones',
@@ -18,20 +19,22 @@ import { UsersService } from '../servicios/usuarios.service';
 export class InscripcionesComponent implements OnInit, OnDestroy{
 
 
-  displayedColumns: string[] = ['id', 'id_curso', 'id_alumno', 'profesor', 'fecha_cursada', 'horario', 'editar', 'borrar'];
+  displayedColumns: string[] = ['id', 'courseId', 'studentId', 'profesor', 'fecha_cursada', 'horario', 'editar', 'borrar'];
 
-
+  _user$: Observable<IUsuario | null>;
 alumnosCursos: IAlumnos[] = []
 cursos: ICursos[] = []
 inscripciones: IInscripciones[] = [];
 inscripcionesSubscription: Subscription | undefined;
 private subscriptions: Subscription[] = [];
 
-constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar,private alumnoService: UsersService,private inscripcionesService: InscrpcionesService,  private http: HttpClient, private cursosService: CursosService) { }
+constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar,private loguin : LoginService,private alumnoService: UsersService,private inscripcionesService: InscrpcionesService,  private http: HttpClient, private cursosService: CursosService) {
+  this._user$ = this.loguin.authUser$;
+
+ }
 ngOnDestroy(): void {
   if (this.inscripcionesSubscription) {
     this.inscripcionesSubscription.unsubscribe();
-    console.log("Me destruyo");
   }
 }
 
@@ -88,7 +91,6 @@ openDialog(claseEditada?: IInscripciones): void {
             this.inscripciones = this.inscripciones.map((inscripciones) => inscripciones.id === claseEditada.id ? { ...inscripciones, ...data } : inscripciones);
           },
           (error) => {
-            console.error('Error al llamar a la API:', error);
           }
         );
       } else {
@@ -97,7 +99,6 @@ openDialog(claseEditada?: IInscripciones): void {
             this.inscripciones = [...this.inscripciones, data];
           },
           (error) => {
-            console.error('Error al llamar a la API:', error);
           }
         );
       }
@@ -137,16 +138,13 @@ confirmarEliminacion(id: string) {
               next: (inscripciones) => {
                 this.inscripciones = inscripciones;
                 this.openSnackBar('Se eliminó la inscripción correctamente');
-                console.log("Se elimino la clase" + id);
               },      
               error: (err) => {
-                console.log('Error al obtener las inscripción después de eliminar:', err);
                 this.openSnackBar('Error al obtener las inscripción después de eliminar');
               }
             });
           },
           (error) => {
-              console.error('Error al eliminar la inscripción:', error);
             this.openSnackBar('Error al eliminar la inscripción');
           }
         );

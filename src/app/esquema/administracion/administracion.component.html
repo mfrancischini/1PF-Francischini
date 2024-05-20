@@ -1,50 +1,65 @@
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer class="example-sidenav max-width-100" mode="side" opened="true">
     <div class="container">
-      
-      <div class="row"*ngIf="(_user$ | async)?.role === 'ADMIN'">
+
+      <div class="row" *ngIf="(_user$ | async)?.role === 'ADMIN' || (_user$ | async)?.role === 'ALUMNO'">
         <div class="col">
           <button mat-icon-button routerLink="alumnos"><mat-icon>group</mat-icon></button>Alumnos
         </div>
       </div>
-      <div class="row"*ngIf="(_user$ | async)?.role === 'ADMIN'">
+      <div class="row" *ngIf="(_user$ | async)?.role === 'ADMIN' || (_user$ | async)?.role === 'ALUMNO'">
         <div class="col">
-          <button mat-icon-button routerLink="cursos" ><mat-icon>menu_book</mat-icon></button>Cursos
-         
+          <button mat-icon-button routerLink="cursos"><mat-icon>menu_book</mat-icon></button>Cursos
+
         </div>
       </div>
 
-      <div class="row"*ngIf="(_user$ | async)?.role === 'ADMIN'">
+      <div class="row" *ngIf="(_user$ | async)?.role === 'ADMIN' || (_user$ | async)?.role === 'ALUMNO'">
         <div class="col">
           <button mat-icon-button routerLink="inscripciones"><mat-icon>school</mat-icon></button>Inscripciones
-         
+
         </div>
-   
-        
-      </div >
-   
+
+      </div>
+
+
+      <div class="row" *ngIf="(_user$ | async)?.role === 'ADMIN'">
+        <div class="col">
+          <button mat-icon-button routerLink="administradores"><mat-icon>person</mat-icon></button>Administradores
+
+        </div>
+      </div>
+
       <div class="row">
         <div class="col">
           <button mat-icon-button (click)="logout()"><mat-icon>logout</mat-icon></button>Logout
-         
+
         </div>
 
-        
-      </div >
 
-    </div>  
-  </mat-drawer> 
+      </div>
+
+    </div>
+  </mat-drawer>
 
 
   <div class="example-sidenav-content">
-    <mat-toolbar color="warn">
-      <button mat-icon-button class="example-icon" (click)="drawer.toggle()" aria-label="Example icon-button with menu icon">
+    <mat-toolbar class="example-toolbar">
+      <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span appAumentarFonts>School Programing</span>
+
+
+      <span appAumentarFonts>School Programing / {{ (routeData$ | async)?.["title"] }}</span>
+
+        <div *ngIf="authUserSinPipe" class="d-flex justify-content-end align-items-center mx-5">
+        <mat-icon>person</mat-icon>
+        <span appAumentarFonts>{{ authUserSinPipe.nombre }}</span>
+      </div>
     </mat-toolbar>
+    
     <main>
-  
+
       <router-outlet></router-outlet>
     </main>
   </div>

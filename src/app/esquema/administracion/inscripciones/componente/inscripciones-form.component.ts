@@ -20,8 +20,8 @@ export class InscripcionFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private matDialogRef: MatDialogRef<InscripcionFormComponent>, private _snackBar: MatSnackBar, private cursoService: CursosService,private alumnoService: UsersService, @Inject(MAT_DIALOG_DATA) private claseEditada?: IInscripciones) {
     this.claseForm = this.formBuilder.group({
-      id_alumno: ['', [Validators.required]],
-      id_curso: ['', Validators.required],
+      studentId: ['', [Validators.required]],
+      courseId: ['', Validators.required],
       profesor: ['', Validators.required],
       fecha_cursada: ['', Validators.required],
       horario: ['', Validators.required],

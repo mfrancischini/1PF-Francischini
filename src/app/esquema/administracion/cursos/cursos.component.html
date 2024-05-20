@@ -1,8 +1,8 @@
 
 <h2>Cursos</h2>
 <hr>
-<div class="d-flex justify-content-end">
-    <button mat-button (click)="openDialog()"><mat-icon>add</mat-icon></button>
+<div class="d-flex justify-content-end" *ngIf="(_user$ | async)?.role === 'ADMIN'">
+    <button mat-button (click)="openDialog()" ><mat-icon>add</mat-icon>Crear</button>
   
   </div>
 
@@ -22,7 +22,7 @@
           </mat-card-content>
 
           <mat-card-actions>
-            <button mat-icon-button (click)="openDialog(curso)">
+            <button mat-icon-button (click)="openDialog(curso)" *ngIf="(_user$ | async)?.role === 'ADMIN'">
               <mat-icon>edit</mat-icon>
             </button>
 
@@ -32,7 +32,7 @@
             </button>
 
 
-            <button mat-icon-button (click)="confirmarEliminacion(curso.id)">
+            <button mat-icon-button (click)="confirmarEliminacion(curso.id)" *ngIf="(_user$ | async)?.role === 'ADMIN'">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-card-actions>

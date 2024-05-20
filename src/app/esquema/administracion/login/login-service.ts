@@ -9,7 +9,7 @@ export class LoginService {
     id: "1",
     nombre: 'mariano',
     email: 'mariano@mail.com',
-    role: 'ADMIN',
+    role: 'ALUMNO',
   };
 
   private _authUser$ = new BehaviorSubject<IUsuario | null>(null);

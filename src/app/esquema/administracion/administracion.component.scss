@@ -7,19 +7,27 @@
   .example-sidenav-content {
 
     height: 100%;
+    background-color: rgba(11, 236, 236, 0.3);
 
   }
   
+  .example-toolbar{
+    background-color: rgba(11, 236, 236, 0.464);
+  }
   .example-sidenav {
     padding: 10px;
-    width: 200px;
+    width: 220px;
+    background-color: rgba(11, 236, 236, 0.464);
+
   }
   main{
     padding: 20px;
   }
+
+  
   
   .container{
-    width: 150px;
+    width: 170px;
   }
 
   span{

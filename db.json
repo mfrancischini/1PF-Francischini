@@ -1,79 +1,46 @@
 {
   "students": [
     {
-      "nombre": "Laura",
-      "apellido": "Rodríguez",
-      "curso": "Desarrollo Frontend",
-      "email": "laura@example.com",
-      "id": "6"
+      "nombre": "Marianos",
+      "apellido": "Francischini",
+      "email": "mfrancischini@easycommerce.tech",
+      "id": "c898"
     },
     {
-      "nombre": "Diegos",
-      "apellido": "Sánchez",
-      "curso": "Desarrollo Frontend",
-      "email": "diego@example.com",
-      "id": "7"
+      "nombre": "Santino",
+      "apellido": "Francischini",
+      "email": "santi@hotmail.com",
+      "id": "002e"
     },
     {
-      "id": "8",
-      "nombre": "María",
-      "apellido": "Díaz",
-      "curso": "Programación Java",
-      "email": "maria@example.com"
-    },
-    {
-      "id": "c898",
-      "nombre": "mariano",
-      "apellido": "prueba",
-      "curso": "Diseño Web",
-      "email": "mfrancischini@easycommerce.tech"
+      "id": "2ede",
+      "nombre": "Lorenzo",
+      "apellido": "Francischini",
+      "email": "lolo@hotmail.com"
     }
   ],
   "courses": [
     {
-      "id": "2",
-      "nombre_curso": "Diseño UX/UI",
-      "profesor": "Luis Martínez",
-      "fecha_cursada": "2022-01-03",
-      "horario": "12:00 - 13:00"
-    },
-    {
+      "id": "2853",
       "nombre_curso": "Angular",
-      "profesor": "Luis Martínez",
-      "fecha_cursada": "2022-01-03",
-      "horario": "12:00 - 13:00",
-      "id": "3"
+      "profesor": "Mariano",
+      "fecha_cursada": "1",
+      "horario": "1"
     },
     {
-      "id": "6eae",
+      "id": "f162",
       "nombre_curso": "React JS",
-      "profesor": "Maximiliano",
-      "fecha_cursada": "2024-06-24",
-      "horario": "18"
+      "profesor": "PEPE",
+      "fecha_cursada": "1",
+      "horario": "1"
     }
   ],
   "classes": [
     {
-      "id": "e325",
-      "id_alumno": "6",
-      "id_curso": "6eae",
-      "profesor": "dsfdsfs",
-      "fecha_cursada": "1",
-      "horario": "1"
-    },
-    {
-      "id": "f083",
-      "id_alumno": "7",
-      "id_curso": "2",
-      "profesor": "fadffd",
-      "fecha_cursada": "1",
-      "horario": "1"
-    },
-    {
-      "id": "ea16",
-      "id_alumno": "c898",
-      "id_curso": "3",
-      "profesor": "asas",
+      "id": "f3ab",
+      "studentId": "c898",
+      "courseId": "2853",
+      "profesor": "dd",
       "fecha_cursada": "1",
       "horario": "1"
     }

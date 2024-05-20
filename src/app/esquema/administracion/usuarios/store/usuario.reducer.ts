@@ -16,6 +16,9 @@ export const initialState: State = {
   error: null,
 };
 
+export const alumnoFeatureName = 'usuario';
+
+
 export const reducer = createReducer(
   initialState,
   on(UsuarioActions.loadUsuarios, (state) => {

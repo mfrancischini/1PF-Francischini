@@ -1,9 +1,8 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { IUsuario } from './models';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, map, filter } from 'rxjs';
 import { LoginService } from './login/login-service';
-import { Router } from '@angular/router';
-
+import { ActivatedRoute, Data, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-administracion',
@@ -19,9 +18,14 @@ export class AdministracionComponent implements OnInit, OnDestroy {
 
   authUserSinPipe: IUsuario | null = null;
   userSuscription?: Subscription;
+  routeData$: Observable<Data | undefined>;
 
-  constructor(private loguin : LoginService, private router: Router) {
+  constructor(private loguin : LoginService, private router: Router, private route: ActivatedRoute) {
     this._user$ = this.loguin.authUser$;
+    this.routeData$ = router.events.pipe(
+      filter((ev) => ev instanceof NavigationEnd),
+      map(() => route.firstChild?.snapshot.data)
+    );
   }
 
   ngOnDestroy(): void {
@@ -41,7 +45,5 @@ export class AdministracionComponent implements OnInit, OnDestroy {
     this.router.navigate(['login']);
   }
 
-  isMobile(): boolean {
-    return window.innerWidth <= 280;
-  }
+
 }

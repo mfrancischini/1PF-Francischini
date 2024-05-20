@@ -18,12 +18,14 @@ import { UsuarioEffects } from './store/usuario.effects';
 import { StoreModule } from '@ngrx/store';
 import { usuarioFeature } from './store/usuario.reducer';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AlumnoDetalleComponent } from './pages/alumno-detalle.component';
 
 
 @NgModule({
   declarations: [
     UsuariosComponent,
-    UserFormComponent
+    UserFormComponent,
+    AlumnoDetalleComponent
   ],
   imports: [
     CommonModule,

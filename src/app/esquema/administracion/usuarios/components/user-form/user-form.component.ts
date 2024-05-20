@@ -19,7 +19,6 @@ export class UserFormComponent {
       this.userForm = this.formBuilder.group({
         nombre: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
         apellido: ['', [Validators.required, Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')]],
-        curso: ['', Validators.required],
         email: ['', [Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}'), Validators.required]],
       });
       

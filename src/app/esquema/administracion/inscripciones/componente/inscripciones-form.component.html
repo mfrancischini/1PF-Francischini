@@ -6,7 +6,7 @@
         <div class="col-6">
           <mat-form-field>
             <mat-label>Selecciona un Alumno</mat-label>
-            <mat-select formControlName="id_alumno">
+            <mat-select formControlName="studentId">
               <mat-option *ngFor="let alumno of alumnosCursos" [value]="alumno.id">
             {{alumno.nombre}}
               </mat-option>
@@ -16,7 +16,7 @@
         <div class="col-6">
           <mat-form-field>
             <mat-label>Selecciona un Curso</mat-label>
-            <mat-select formControlName="id_curso">
+            <mat-select formControlName="courseId">
               <mat-option *ngFor="let curso of cursos" [value]="curso.id">
             {{curso.nombre_curso}}
               </mat-option>

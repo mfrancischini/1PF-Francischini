@@ -3,8 +3,8 @@
 @if ( isLoading$ | async ){
   <mat-spinner></mat-spinner>
 } @else {
-  <div class="d-flex justify-content-end">
-    <button mat-button (click)="openDialog()"><mat-icon>add</mat-icon></button>
+  <div class="d-flex justify-content-end" *ngIf="(_user$ | async)?.role === 'ADMIN'">
+    <button mat-button (click)="openDialog()"><mat-icon>add</mat-icon>Crear</button>
   
   </div>
 
@@ -29,30 +29,24 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
         <mat-cell *matCellDef="let element" data-label="name"> {{element.email}} </mat-cell>
       </ng-container>
-  
-
-      <ng-container matColumnDef="curso">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Curso </mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="curso"> {{element.curso}} </mat-cell>
-      </ng-container>
 
       
     <ng-container matColumnDef="editar">
       <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
-      <mat-cell *matCellDef="let element"><button mat-icon-button (click)="openDialog(element)"><mat-icon>edit</mat-icon></button>
+      <mat-cell *matCellDef="let element"><button mat-icon-button (click)="openDialog(element)" *ngIf="(_user$ | async)?.role === 'ADMIN'"><mat-icon>edit</mat-icon></button>
       </mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="ver">
       <mat-header-cell *matHeaderCellDef> Ver </mat-header-cell>
-      <mat-cell *matCellDef="let element"><button mat-icon-button (click)="openDialog(element)"><mat-icon>visibility</mat-icon></button>
+      <mat-cell *matCellDef="let element"><button mat-icon-button [routerLink]="element.id" ><mat-icon>visibility</mat-icon></button>
       </mat-cell>
     </ng-container>
 
 
     <ng-container matColumnDef="borrar">
       <mat-header-cell *matHeaderCellDef> Borrar </mat-header-cell>
-      <mat-cell *matCellDef="let element"><button mat-icon-button (click)="confirmarEliminacion(element.id)"><mat-icon>delete</mat-icon></button>
+      <mat-cell *matCellDef="let element"><button mat-icon-button (click)="confirmarEliminacion(element.id)"  *ngIf="(_user$ | async)?.role === 'ADMIN'"><mat-icon>delete</mat-icon></button>
       </mat-cell>
     </ng-container>
 

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IAlumnos } from '../models';
+import { IAlumnos, IUsuario } from '../models';
 import { MatDialog } from '@angular/material/dialog';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,6 +10,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { UsuarioActions } from './store/usuario.actions';
 import { selectIsLoading, selectUsuarios } from './store/usuario.selectors';
+import { LoginService } from '../login/login-service';
 
 
 @Component({
@@ -18,34 +19,31 @@ import { selectIsLoading, selectUsuarios } from './store/usuario.selectors';
   styleUrl: './usuarios.component.scss'
 })
 export class UsuariosComponent implements OnInit, OnDestroy {
+  _user$: Observable<IUsuario | null>;
 
 
-  displayedColumns: string[] = ['id', 'nombreyapellido', 'curso', 'email', 'editar','ver', 'borrar'];
+  displayedColumns: string[] = ['id', 'nombreyapellido', 'email', 'editar','ver', 'borrar'];
 
   isLoading$: Observable<boolean>;
   alumnos$: Observable<IAlumnos[]>
   usuarios: IAlumnos[] = [];
   usuariosSubscription: Subscription | undefined;
-  constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar, private usuariosService: UsersService, private http: HttpClient, private store: Store) {
+  constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar,  private loguin : LoginService,private usuariosService: UsersService, private http: HttpClient, private store: Store) {
 
     this.isLoading$ = store.select(selectIsLoading);
     this.alumnos$ = store.select(selectUsuarios);
+    this._user$ = this.loguin.authUser$;
+
   }
 
 
 
-  ngOnDestroy(): void {
-    if (this.usuariosSubscription) {
-      this.usuariosSubscription.unsubscribe();
-      console.log("Me destruyo");
-    }
-  }
 
 
 
   ngOnInit(): void {
 
-    this.store.select(selectIsLoading).subscribe(console.log);
+    this.store.select(selectIsLoading).subscribe();
     this.store.dispatch(UsuarioActions.loadUsuarios());
   }
   openDialog(usuarioEditado?: IAlumnos): void {
@@ -88,6 +86,11 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngOnDestroy(): void {
+    if (this.usuariosSubscription) {
+      this.usuariosSubscription.unsubscribe();
+    }
+  }
 
 
 
