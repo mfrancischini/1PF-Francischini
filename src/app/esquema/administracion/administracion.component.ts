@@ -3,6 +3,8 @@ import { IUsuario } from './models';
 import { Observable, Subscription, map, filter } from 'rxjs';
 import { LoginService } from './login/login-service';
 import { ActivatedRoute, Data, NavigationEnd, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { loginActions } from './login/store/login.actions';
 
 @Component({
   selector: 'app-administracion',
@@ -20,7 +22,7 @@ export class AdministracionComponent implements OnInit, OnDestroy {
   userSuscription?: Subscription;
   routeData$: Observable<Data | undefined>;
 
-  constructor(private loguin : LoginService, private router: Router, private route: ActivatedRoute) {
+  constructor(private loguin : LoginService, private router: Router, private route: ActivatedRoute,private store: Store) {
     this._user$ = this.loguin.authUser$;
     this.routeData$ = router.events.pipe(
       filter((ev) => ev instanceof NavigationEnd),
@@ -42,6 +44,7 @@ export class AdministracionComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.loguin.logout();
+    this.store.dispatch(loginActions.logout());
     this.router.navigate(['login']);
   }
 

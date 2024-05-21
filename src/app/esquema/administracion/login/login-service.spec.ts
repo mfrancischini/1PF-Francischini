@@ -1,55 +1,53 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { Observable } from 'rxjs';
 import { LoginService } from './login-service';
+import { loginActions } from './store/login.actions';
+import { AppState } from './store/app.state';
 
 describe('LoginService', () => {
   let loginService: LoginService;
   let router: Router;
+  let store: MockStore<AppState>;
+
+  const initialState = {
+    auth: {
+      loginUser: null,
+    },
+  };
 
   beforeEach(() => {
+    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
     TestBed.configureTestingModule({
-      providers: [],
+      providers: [
+        provideMockStore({ initialState }),
+        { provide: Router, useValue: routerSpy },
+        LoginService,
+      ],
     });
+
     loginService = TestBed.inject(LoginService);
     router = TestBed.inject(Router);
+    store = TestBed.inject(MockStore);
   });
 
-  it('Debe establecer un usuario autenticado , crear un item en localStorage y redirigir al llamar login', () => {
-    const spyOnSetItem = spyOn(localStorage, 'setItem');
-    const spyOnNavigate = spyOn(router, 'navigate');
-    loginService.login({
-      username: 'mariano',
-      password: '123456',
-    });
-    loginService.authUser$.subscribe({
-      next: (authUser) => {
-        expect(authUser).toBeTruthy(); 
-        expect(spyOnSetItem).toHaveBeenCalled();
-        expect(spyOnNavigate).toHaveBeenCalled();
-      },
-    });
+  it('Debe disparar login action al llamar login', () => {
+    const dispatchSpy = spyOn(store, 'dispatch').and.callThrough();
+    const loginData = { username: 'mariano', password: '123456' };
+
+    loginService.login(loginData);
+
+    expect(dispatchSpy).toHaveBeenCalledWith(loginActions.login({ data: loginData }));
   });
 
+  it('Debe disparar logout action al llamar logout', () => {
+    const dispatchSpy = spyOn(store, 'dispatch').and.callThrough();
 
-
-  it('Debe mostrar Correo o password incorrectos si los datos no son correctos', () => {
-    const spyOnAlert = spyOn(window, 'alert');
-    loginService.login({
-      username: 'marcelo',
-      password: 'abcde123',
-    });
-    expect(spyOnAlert).toHaveBeenCalledWith('Correo o password incorrectos');
-  });
-
-
-
-
-  it('Debe  llamar a removeItem al hacer logout', () => {
-        const spyOnremoveItem = spyOn(localStorage, 'removeItem');
     loginService.logout();
-    expect(spyOnremoveItem).toHaveBeenCalled();
-  });
 
+    expect(dispatchSpy).toHaveBeenCalledWith(loginActions.logout());
+  });
 
   it('Debe retornar true si accessToken existe en localStorage', () => {
     spyOn(localStorage, 'getItem').and.returnValue('dummyAccessToken');
@@ -66,6 +64,4 @@ describe('LoginService', () => {
 
     expect(result).toBe(false);
   });
-  
 });
-

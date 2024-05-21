@@ -50,13 +50,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
     } else {
-     // this.loguin.login(this.loginForm.getRawValue());
      this.store.dispatch(loginActions.login({data: this.loginForm.getRawValue()}));
     }
   }
 
   logout(): void {
-    this.loguin.logout();
+    this.store.dispatch(loginActions.logout());
+  //  this.loguin.logout();
   }
 }
 function next(value: IUsuario | null): void {

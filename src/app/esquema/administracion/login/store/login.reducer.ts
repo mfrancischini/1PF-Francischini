@@ -31,12 +31,10 @@ export const loginReducer = createReducer(
             alert('Correo o password incorrectos');
             return state
           } else {
-            //this._authUser$.next(this.MOCK_AUTH_USER);
             localStorage.setItem(
               'accessToken',
               '21397873403248093420'
             );
-         //   this.router.navigate(['alumnos']);
        
           return{ 
             loginUser: MOCK_AUTH_USER

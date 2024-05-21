@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IUsuario, IDatosLogin } from '../models';
+import { Store } from '@ngrx/store';
+import { loginActions } from './store/login.actions';
+import { loginUser } from './store/login.selectors';
+import { AppState } from './store/app.state';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
@@ -9,39 +13,30 @@ export class LoginService {
     id: "1",
     nombre: 'mariano',
     email: 'mariano@mail.com',
-    role: 'ALUMNO',
+    role: 'ADMIN',
   };
 
-  private _authUser$ = new BehaviorSubject<IUsuario | null>(null);
-  public authUser$ = this._authUser$.asObservable();
+  public authUser$: Observable<IUsuario | null>;
 
-  constructor(private router: Router) {}
-
-  login(data: IDatosLogin): void {
-    if (data.username !== 'mariano' || data.password !== '123456') {
-      alert('Correo o password incorrectos');
-    } else {
-      this._authUser$.next(this.MOCK_AUTH_USER);
-      localStorage.setItem(
-        'accessToken',
-        '21397873403248093420'
-      );
-      this.router.navigate(['alumnos']);
-    }
+  constructor(private router: Router, private store: Store<AppState>) {
+    this.authUser$ = this.store.select(loginUser);
   }
 
   verifyToken(): boolean {
     const token = localStorage.getItem('accessToken');
     if (token) {
-      this._authUser$.next(this.MOCK_AUTH_USER);
+      // Aquí podrías despachar una acción para establecer el usuario si es necesario.
       return true;
     } else {
       return false;
     }
   }
 
+  login(data: IDatosLogin): void {
+    this.store.dispatch(loginActions.login({ data }));
+  }
+
   logout(): void {
-    this._authUser$.next(null);
-    localStorage.removeItem('accessToken');
+    this.store.dispatch(loginActions.logout());
   }
 }

@@ -5,18 +5,6 @@
       "apellido": "Francischini",
       "email": "mfrancischini@easycommerce.tech",
       "id": "c898"
-    },
-    {
-      "nombre": "Santino",
-      "apellido": "Francischini",
-      "email": "santi@hotmail.com",
-      "id": "002e"
-    },
-    {
-      "id": "2ede",
-      "nombre": "Lorenzo",
-      "apellido": "Francischini",
-      "email": "lolo@hotmail.com"
     }
   ],
   "courses": [
@@ -35,14 +23,5 @@
       "horario": "1"
     }
   ],
-  "classes": [
-    {
-      "id": "f3ab",
-      "studentId": "c898",
-      "courseId": "2853",
-      "profesor": "dd",
-      "fecha_cursada": "1",
-      "horario": "1"
-    }
-  ]
+  "classes": []
 }

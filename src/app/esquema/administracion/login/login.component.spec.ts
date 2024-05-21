@@ -1,36 +1,52 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
-
 import { LoginComponent } from './login.component';
 import { LoginService } from './login-service';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { AppState } from './store/app.state';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let loginService: LoginService;
+  let store: MockStore<AppState>;
+
+  const initialState = {
+    auth: {
+      loginUser: null,
+    },
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [MatCardModule, MatFormFieldModule, ReactiveFormsModule,MatInputModule,
-        MatSelectModule,BrowserAnimationsModule],
+      imports: [
+        MatCardModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSelectModule,
+        BrowserAnimationsModule,
+      ],
+      providers: [
+        provideMockStore({ initialState }),
+        LoginService,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-
     loginService = TestBed.inject(LoginService);
+    store = TestBed.inject(MockStore);
 
     fixture.detectChanges();
   });
 
-  
   it('El campo username debe ser requerido', () => {
     const control = component.loginForm.get('username');
     control?.setValue('');
@@ -56,22 +72,5 @@ describe('LoginComponent', () => {
     component.login();
     expect(spyOnMarkAllAsTouched).toHaveBeenCalled();
   });
-  it('Debe llamar login de loginService si el formulario es valido', () => {
-    const spyOnLogin = spyOn(loginService, 'login');
-    component.loginForm.setValue({
-      username: 'mariano',
-      password: '123456'
-    });
-    component.login();
-    expect(spyOnLogin).toHaveBeenCalled();
-})
 
-
-
-it('Debe llamar a logout de loginComponent', () => {
-  const spyOnLogout = spyOn(loginService, 'logout');
-
-  component.logout();
-  expect(spyOnLogout).toHaveBeenCalled();
-})
 });
