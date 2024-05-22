@@ -61,7 +61,7 @@ export class InscripcionFormComponent implements OnInit, OnDestroy {
     else {
       this.matDialogRef.close(this.claseForm.value);
       this.openSnackBar('Se creo una nueva clase')
-      localStorage.setItem('miClase', JSON.stringify(this.claseForm.value));
+    
     }
 
   }

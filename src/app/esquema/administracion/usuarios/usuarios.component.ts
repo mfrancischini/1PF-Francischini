@@ -46,6 +46,8 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     this.store.select(selectIsLoading).subscribe();
     this.store.dispatch(UsuarioActions.loadUsuarios());
   }
+
+  
   openDialog(usuarioEditado?: IAlumnos): void {
     const dialogRef = this.matDialog.open(UserFormComponent, {
       data: usuarioEditado,

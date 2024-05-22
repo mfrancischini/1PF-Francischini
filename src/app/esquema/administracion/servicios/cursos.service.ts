@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ICursos } from '../models';
+import { ICreateCursosPayload, ICursos } from '../models';
 import { Observable, delay, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
@@ -17,6 +17,16 @@ export class CursosService {
 
   }
 
+  createCursos(payload: ICreateCursosPayload): Observable<ICursos> {
+    return this.http.post<ICursos>(environment.baseAPIURL + '/courses', payload)
+  
+  }
+
+  updateCursos(id: string, payload: ICreateCursosPayload): Observable<ICursos> {
+    return this.http.put<ICursos>(`${environment.baseAPIURL}/courses/${id}`, payload);
+  }
+
+
   obtenerCursoById(id: string): Observable<ICursos| undefined> {
     return this.http.get<ICursos>(`${environment.baseAPIURL}/courses/${id}`)
    }
@@ -24,6 +34,10 @@ export class CursosService {
    obtenerCursosPorIds(ids: string[]): Observable<ICursos[]> {
     const queryString = ids.map(id => `id=${id}`).join('&');
     return this.http.get<ICursos[]>(`${environment.baseAPIURL}/courses?${queryString}`);
+  }
+
+  deleteCursos(id: string): Observable<ICursos> {
+    return this.http.delete<ICursos>(`${environment.baseAPIURL}/courses/${id}`)
   }
 
   

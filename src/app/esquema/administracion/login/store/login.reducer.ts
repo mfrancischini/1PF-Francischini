@@ -17,7 +17,7 @@ const MOCK_AUTH_USER: IUsuario = {
     id: "1",
     nombre: 'mariano',
     email: 'mariano@mail.com',
-    role: 'ALUMNO',
+    role: 'ADMIN',
   };
 
 export const loginFeatureName = 'login'

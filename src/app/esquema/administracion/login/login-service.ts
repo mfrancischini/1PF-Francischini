@@ -22,21 +22,26 @@ export class LoginService {
     this.authUser$ = this.store.select(loginUser);
   }
 
+
   verifyToken(): boolean {
+
     const token = localStorage.getItem('accessToken');
     if (token) {
-      // Aquí podrías despachar una acción para establecer el usuario si es necesario.
+
       return true;
     } else {
+
       return false;
     }
   }
 
   login(data: IDatosLogin): void {
     this.store.dispatch(loginActions.login({ data }));
+
   }
 
   logout(): void {
     this.store.dispatch(loginActions.logout());
+
   }
 }

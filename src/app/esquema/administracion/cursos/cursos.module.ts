@@ -15,6 +15,10 @@ import { FormCursosComponent } from './componente/form-cursos.component';
 import { MatCardModule } from '@angular/material/card';
 import { CursoDetalleComponent } from './pages/cursos-detalle.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { EffectsModule } from '@ngrx/effects';
+import { CursoEffects } from './store/curso.effects';
+import { StoreModule } from '@ngrx/store';
+import { cursoFeature } from './store/curso.reducer';
 
 
 @NgModule({
@@ -25,6 +29,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ],
   imports: [
     CommonModule,
+    MatProgressSpinnerModule,
     CursosRoutingModule,
     MatIconModule,
     MatTableModule,
@@ -37,7 +42,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    StoreModule.forFeature(cursoFeature),
+    EffectsModule.forFeature([CursoEffects])
   ]
 })
 export class CursosModule { }

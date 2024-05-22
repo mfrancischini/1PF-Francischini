@@ -54,11 +54,9 @@ ngOnInit(): void {
       this.inscripciones = inscripciones;
     },
     error: (err) => {
-      console.log('error: ', err);
       Swal.fire('Error', 'Ocurrio un error', 'error');
     },
     complete: () => {
-      console.log('complete');
     },
   });
 }

@@ -8,7 +8,7 @@ export const autenticacionGuard: CanActivateFn = (route, state) => {
 
 
   const esUsuarioAutenticado = loginService.verifyToken()
-
+  
   return esUsuarioAutenticado || router.createUrlTree(['login']);
 
 }

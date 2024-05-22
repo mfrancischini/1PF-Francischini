@@ -9,7 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { loginReducer, loginFeatureName } from './esquema/administracion/login/store/login.reducer'; // Importa el reducer relacionado con el inicio de sesión
+import { loginReducer } from './esquema/administracion/login/store/login.reducer'; // Importa el reducer relacionado con el inicio de sesión
+import { rootReducer } from './esquema/administracion/login/store';
+import { UsuarioEffects } from './esquema/administracion/usuarios/store/usuario.effects';
 
 
 @NgModule({
@@ -25,8 +27,9 @@ import { loginReducer, loginFeatureName } from './esquema/administracion/login/s
         AppRoutingModule,
         AdministracionModule,
         HttpClientModule,
-        StoreModule.forRoot({ login: loginReducer }), // Asigna el reducer a la característica "login"
-        EffectsModule.forRoot([]),
+        StoreModule.forRoot(rootReducer
+        ), 
+        EffectsModule.forRoot([UsuarioEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
 
     ]

@@ -41,6 +41,13 @@ export interface ICreateAlumnosPayload {
     id: string;
     nombre: string;
     apellido: string;
-    curso: string;
     email: string;
+}
+
+export interface ICreateCursosPayload {
+
+    nombre_curso: string;
+    profesor: string;
+    fecha_cursada: string;
+    horario: string;
 }
