@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IInscripciones } from '../models';
+import { ICreateInscripcionesPayload, IInscripciones } from '../models';
 import { Observable, delay, map, of, switchMap } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
@@ -20,6 +20,15 @@ constructor(private http: HttpClient) { }
     return this.http.get<IInscripciones[]>(environment.baseAPIURL + '/classes')
   }
 
+  updateInscripcion(id: string, payload: ICreateInscripcionesPayload): Observable<IInscripciones> {
+    return this.http.put<IInscripciones>(`${environment.baseAPIURL}/classes/${id}`, payload);
+  }
+
+
+  createInscripcion(payload: ICreateInscripcionesPayload): Observable<IInscripciones> {
+    return this.http.post<IInscripciones>(environment.baseAPIURL + '/classes', payload)
+  
+  }
   obtenerAlumnosById(id: string): Observable<IInscripciones[]| undefined> {
     return this.http.get<IInscripciones[]>(`${environment.baseAPIURL}/classes/${id}`)
    }

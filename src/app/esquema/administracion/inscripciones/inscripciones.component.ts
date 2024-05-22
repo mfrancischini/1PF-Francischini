@@ -10,6 +10,9 @@ import { HttpClient } from '@angular/common/http';
 import { CursosService } from '../servicios/cursos.service';
 import { UsersService } from '../servicios/usuarios.service';
 import { LoginService } from '../login/login-service';
+import { Store } from '@ngrx/store';
+import { selectInscripcionState, selectInscripciones, selectInscripcionesError, selectInscripcionesLoading } from './store/inscripcion.selectors';
+import { InscripcionActions } from './store/inscripcion.actions';
 
 @Component({
   selector: 'app-inscripciones',
@@ -27,9 +30,14 @@ cursos: ICursos[] = []
 inscripciones: IInscripciones[] = [];
 inscripcionesSubscription: Subscription | undefined;
 private subscriptions: Subscription[] = [];
-
-constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar,private loguin : LoginService,private alumnoService: UsersService,private inscripcionesService: InscrpcionesService,  private http: HttpClient, private cursosService: CursosService) {
+isLoading$: Observable<boolean>
+inscripciones$ : Observable<IInscripciones[]> ;
+error$: Observable<unknown>;
+constructor(private matDialog: MatDialog, private _snackBar: MatSnackBar,private loguin : LoginService,private alumnoService: UsersService,private inscripcionesService: InscrpcionesService,  private http: HttpClient, private cursosService: CursosService, private store: Store) {
   this._user$ = this.loguin.authUser$;
+this.isLoading$ = this.store.select(selectInscripcionesLoading);
+this.inscripciones$ = this.store.select(selectInscripciones);
+this.error$ = this.store.select(selectInscripcionesError);
 
  }
 ngOnDestroy(): void {
@@ -40,6 +48,11 @@ ngOnDestroy(): void {
 
 
 ngOnInit(): void {
+
+
+    this.store.dispatch(InscripcionActions.loadInscripcions());
+
+
   const alumnosSubscription = this.alumnoService.getUsuarios().subscribe(data => {
     this.alumnosCursos = data;
   });
@@ -80,28 +93,16 @@ openDialog(claseEditada?: IInscripciones): void {
 
   dialogRef.afterClosed().subscribe((resultado) => {
     if (resultado) {
-      let url = 'http://localhost:3000/classes/';
-
       if (claseEditada && claseEditada.id) {
-        url += claseEditada.id; 
-        this.http.put<any>(url, resultado).subscribe(
-          (data) => {
-            this.inscripciones = this.inscripciones.map((inscripciones) => inscripciones.id === claseEditada.id ? { ...inscripciones, ...data } : inscripciones);
-          },
-          (error) => {
-          }
-        );
+        this.store.dispatch(InscripcionActions.updateInscripcions({ id: claseEditada.id, payload: resultado }));
       } else {
-        this.http.post<any>(url, resultado).subscribe(
-          (data) => {
-            this.inscripciones = [...this.inscripciones, data];
-          },
-          (error) => {
-          }
-        );
+        this.store.dispatch(InscripcionActions.createInscripcions({ data: resultado }));
       }
     }
   });
+       
+       
+
 }
 
 
@@ -110,11 +111,10 @@ openDialog(claseEditada?: IInscripciones): void {
 openSnackBar(message: string) {
   this._snackBar.open(message, undefined, { duration: 2000, });
 }
-
 confirmarEliminacion(id: string) {
   Swal.fire({
     title: "ELIMINAR",
-    text: "¿Está seguro de eliminar la inscripción?",
+    text: "¿Está seguro de eliminar la inscripcion?",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
@@ -122,31 +122,7 @@ confirmarEliminacion(id: string) {
     confirmButtonText: "Sí"
   }).then((result) => {
     if (result.isConfirmed) {
-    
-      {
-        this.http.delete(`http://localhost:3000/classes/${id}`).subscribe(
-          () => {
-            // Eliminación exitosa
-            Swal.fire({
-              title: "¡Eliminado!",
-              text: "La inscripción se ha sido eliminado.",
-              icon: "success"
-            });
-            this.inscripcionesService.obtenerClases().subscribe({
-              next: (inscripciones) => {
-                this.inscripciones = inscripciones;
-                this.openSnackBar('Se eliminó la inscripción correctamente');
-              },      
-              error: (err) => {
-                this.openSnackBar('Error al obtener las inscripción después de eliminar');
-              }
-            });
-          },
-          (error) => {
-            this.openSnackBar('Error al eliminar la inscripción');
-          }
-        );
-      }
+      this.store.dispatch(InscripcionActions.deleteInscripcionsById({ id }));
     }
   });
 }

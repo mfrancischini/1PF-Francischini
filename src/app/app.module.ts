@@ -9,9 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { loginReducer } from './esquema/administracion/login/store/login.reducer'; // Importa el reducer relacionado con el inicio de sesión
 import { rootReducer } from './esquema/administracion/login/store';
 import { UsuarioEffects } from './esquema/administracion/usuarios/store/usuario.effects';
+import { CursoEffects } from './esquema/administracion/cursos/store/curso.effects';
+import { InscripcionEffects } from './esquema/administracion/inscripciones/store/inscripcion.effects';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { UsuarioEffects } from './esquema/administracion/usuarios/store/usuario.
         HttpClientModule,
         StoreModule.forRoot(rootReducer
         ), 
-        EffectsModule.forRoot([UsuarioEffects]),
+        EffectsModule.forRoot([UsuarioEffects, CursoEffects, InscripcionEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
 
     ]

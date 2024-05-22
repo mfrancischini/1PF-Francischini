@@ -51,3 +51,14 @@ export interface ICreateCursosPayload {
     fecha_cursada: string;
     horario: string;
 }
+
+export interface ICreateInscripcionesPayload {
+
+    studentId: string;
+    courseId: string;
+    profesor: string;
+    fecha_cursada?: string;
+    horario?: string;
+
+}
+

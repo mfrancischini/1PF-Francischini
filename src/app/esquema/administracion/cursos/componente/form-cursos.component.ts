@@ -41,7 +41,6 @@ export class FormCursosComponent {
       else {
         this.matDialogRef.close(this.cursoForm.value);
         this.openSnackBar('Se creo un nuevo curso')
-        localStorage.setItem('miCurso', JSON.stringify(this.cursoForm.value));
       }
     
     }

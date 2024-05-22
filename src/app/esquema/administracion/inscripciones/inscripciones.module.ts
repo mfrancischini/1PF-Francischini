@@ -13,6 +13,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { EffectsModule } from '@ngrx/effects';
+import { InscripcionEffects } from './store/inscripcion.effects';
+import { StoreModule } from '@ngrx/store';
+import { inscripcionFeature } from './store/inscripcion.reducer';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -33,6 +38,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSelectModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
+    StoreModule.forFeature(inscripcionFeature),
+    EffectsModule.forFeature([InscripcionEffects]),
   ],
   exports: [
     InscripcionesComponent

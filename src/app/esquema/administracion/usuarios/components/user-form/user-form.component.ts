@@ -40,7 +40,6 @@ export class UserFormComponent {
     else {
       this.matDialogRef.close(this.userForm.value);
       this.openSnackBar('Se creo un nuevo usuario')
-      localStorage.setItem('miUsurios', JSON.stringify(this.userForm.value));
     }
 
   }

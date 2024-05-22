@@ -31,12 +31,12 @@
   ],
   "classes": [
     {
-      "id": "517f",
       "studentId": "c898",
-      "courseId": "2853",
-      "profesor": "p",
+      "courseId": "9b98",
+      "profesor": "papa",
       "fecha_cursada": "1",
-      "horario": "1"
+      "horario": "1",
+      "id": "517f"
     }
   ]
 }

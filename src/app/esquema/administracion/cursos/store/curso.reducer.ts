@@ -4,19 +4,21 @@ import { ICursos } from '../../models';
 
 export const cursoFeatureKey = 'curso';
 
-export interface State {
+export interface CursoState {
   cursos : ICursos[],
   isLoading: boolean,
   error: unknown ,
 }
 
-export const initialState: State = {
+export const initialState: CursoState = {
   cursos: [],
   isLoading: false,
   error: null
 };
 
-export const reducer = createReducer(
+export const cursoFeatureName = 'curso';
+
+export const reducerCurso = createReducer(
   initialState,
   on(CursoActions.loadCursos, (state) => {
     return {...state, isLoading: true}
@@ -111,6 +113,6 @@ export const reducer = createReducer(
 
 export const cursoFeature = createFeature({
   name: cursoFeatureKey,
-  reducer,
+  reducer: reducerCurso ,
 });
 

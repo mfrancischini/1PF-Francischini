@@ -4,13 +4,13 @@ import { IAlumnos } from '../../models';
 
 export const usuarioFeatureKey = 'usuario';
 
-export interface State {
+export interface UsuarioState {
   usuarios: IAlumnos[];
   isloading: boolean;
   error: unknown,
 }
 
-export const initialState: State = {
+export const initialState: UsuarioState = {
   usuarios: [],
   isloading: false,
   error: null,
