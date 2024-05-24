@@ -1,42 +1,113 @@
 {
   "students": [
     {
-      "nombre": "Marianos",
+      "nombre": "Mariano",
       "apellido": "Francischini",
       "email": "mfrancischini@easycommerce.tech",
       "id": "c898"
     },
     {
-      "id": "706e",
-      "nombre": "Santino",
+      "nombre": "Lorenzo",
       "apellido": "Francischini",
-      "email": "qa@easycommerce.tech"
+      "email": "lolo@hotmail.com",
+      "id": "0e7a"
+    },
+    {
+      "id": "a861",
+      "nombre": "Pedro",
+      "apellido": "Sanchez",
+      "email": "predo@gmail.com"
+    },
+    {
+      "id": "195e",
+      "nombre": "Melisa",
+      "apellido": "Blanco",
+      "email": "melisa@gmail.com"
+    },
+    {
+      "id": "eff8",
+      "nombre": "Santino",
+      "apellido": "Pascal",
+      "email": "santi@mail.com"
     }
   ],
   "courses": [
     {
-      "id": "2853",
       "nombre_curso": "Angular",
       "profesor": "Mariano",
-      "fecha_cursada": "1",
-      "horario": "1"
+      "fecha_cursada": "18-04-2025",
+      "horario": "16",
+      "id": "2853"
     },
     {
-      "id": "9b98",
       "nombre_curso": "React JS",
       "profesor": "PEPE",
-      "fecha_cursada": "1",
-      "horario": "1"
+      "fecha_cursada": "09-08-2024",
+      "horario": "22",
+      "id": "9b98"
+    },
+    {
+      "nombre_curso": "Redux",
+      "profesor": "Josue",
+      "fecha_cursada": "11-06-2024",
+      "horario": "19",
+      "id": "2ab2"
+    }
+  ],
+  "admin": [
+    {
+      "nombre": "admin",
+      "password": "123456",
+      "role": "ADMIN",
+      "id": "6df6"
+    },
+    {
+      "nombre": "alumno",
+      "password": "123456",
+      "role": "ALUMNO",
+      "id": "1dc8"
     }
   ],
   "classes": [
     {
       "studentId": "c898",
+      "courseId": "2853",
+      "profesor": "Josue",
+      "fecha_cursada": "13-06-2024\t",
+      "horario": "20",
+      "id": "012e"
+    },
+    {
+      "id": "b57d",
+      "studentId": "0e7a",
       "courseId": "9b98",
-      "profesor": "papa",
-      "fecha_cursada": "1",
-      "horario": "1",
-      "id": "517f"
+      "profesor": "Josue",
+      "fecha_cursada": "13-06-2024",
+      "horario": "19"
+    },
+    {
+      "id": "6b89",
+      "studentId": "a861",
+      "courseId": "9b98",
+      "profesor": "Josue",
+      "fecha_cursada": "13-06-2024",
+      "horario": "12"
+    },
+    {
+      "id": "900d",
+      "studentId": "195e",
+      "courseId": "2ab2",
+      "profesor": "Josue",
+      "fecha_cursada": "13-06-2024",
+      "horario": "17"
+    },
+    {
+      "id": "c80d",
+      "studentId": "eff8",
+      "courseId": "9b98",
+      "profesor": "Josue",
+      "fecha_cursada": "13-06-2024",
+      "horario": "21"
     }
   ]
 }

@@ -59,6 +59,9 @@ export class LoginComponent implements OnInit {
   //  this.loguin.logout();
   }
 }
+
+
+
 function next(value: IUsuario | null): void {
   throw new Error('Function not implemented.');
 }

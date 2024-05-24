@@ -13,35 +13,39 @@ const initialState: LoginState = {
 
 }
 
-const MOCK_AUTH_USER: IUsuario = {
+const MOCK_AUTH_USERS: IUsuario []= [{
     id: "1",
-    nombre: 'mariano',
-    email: 'mariano@mail.com',
+    nombre: 'admin',
+    password: '123456',
     role: 'ADMIN',
-  };
+  },
+  {
+    id: "2",
+    nombre: 'alumno',
+    password: '123456',
+    role: 'ALUMNO',
+  },
+];
 
 export const loginFeatureName = 'login'
 
 export const loginReducer = createReducer(
-    initialState,
-    on(loginActions.login, (state, action) =>{
+  initialState,
+  on(loginActions.login, (state, action) => {
+      const user = MOCK_AUTH_USERS.find(
+          user => user.nombre === action.data.username && user.password === action.data.password
+      );
 
-        
-        if (action.data.username !== 'mariano' || action.data.password !== '123456') {
-            alert('Correo o password incorrectos');
-            return state
-          } else {
-            localStorage.setItem(
-              'accessToken',
-              '21397873403248093420'
-            );
-       
-          return{ 
-            loginUser: MOCK_AUTH_USER
-          }
-        }
-    }),
-
+      if (!user) {
+          alert('Correo o password incorrectos');
+          return state;
+      } else {
+          localStorage.setItem('accessToken', '21397873403248093420');
+          return { 
+              loginUser: user 
+          };
+      }
+  }),
 
     on(loginActions.logout, () => {
 

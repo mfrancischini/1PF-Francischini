@@ -13,6 +13,7 @@ import { rootReducer } from './esquema/administracion/login/store';
 import { UsuarioEffects } from './esquema/administracion/usuarios/store/usuario.effects';
 import { CursoEffects } from './esquema/administracion/cursos/store/curso.effects';
 import { InscripcionEffects } from './esquema/administracion/inscripciones/store/inscripcion.effects';
+import { AdminEffects } from './esquema/administracion/admin/store/admin.effects';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { InscripcionEffects } from './esquema/administracion/inscripciones/store
         HttpClientModule,
         StoreModule.forRoot(rootReducer
         ), 
-        EffectsModule.forRoot([UsuarioEffects, CursoEffects, InscripcionEffects]),
+        EffectsModule.forRoot([UsuarioEffects, CursoEffects, InscripcionEffects, AdminEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
 
     ]

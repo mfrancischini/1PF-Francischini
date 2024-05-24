@@ -43,6 +43,14 @@ const routes: Routes = [
     },
     canActivate: [autenticacionGuard],
     loadChildren: () => import('./esquema/administracion/inscripciones/inscripciones.module').then(m => m.InscripcionesModule)
+  },
+  {
+    path: 'admin',
+    data: {
+      title: 'Administrador',
+    },
+    canActivate: [autenticacionGuard],
+    loadChildren: () => import('./esquema/administracion/admin/admin.module').then(m => m.AdminModule)
   }
   ,
   {

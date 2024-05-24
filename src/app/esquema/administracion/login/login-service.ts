@@ -9,12 +9,6 @@ import { AppState } from './store/app.state';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  private MOCK_AUTH_USER: IUsuario = {
-    id: "1",
-    nombre: 'mariano',
-    email: 'mariano@mail.com',
-    role: 'ADMIN',
-  };
 
   public authUser$: Observable<IUsuario | null>;
 

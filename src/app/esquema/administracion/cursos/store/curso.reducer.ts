@@ -27,7 +27,6 @@ export const reducerCurso = createReducer(
     return{
       ...state,
       isLoading: false,
-      error: null,
       cursos: action.data
     }
   }),

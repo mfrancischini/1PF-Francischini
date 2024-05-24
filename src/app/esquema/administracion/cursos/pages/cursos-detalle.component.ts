@@ -6,6 +6,7 @@ import { CursosService } from '../../servicios/cursos.service';
 import { InscrpcionesService } from '../../servicios/inscripciones.service';
 import { UsersService } from '../../servicios/usuarios.service';
 import { LoginService } from '../../login/login-service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cursos-detalle',
@@ -101,11 +102,26 @@ export class CursoDetalleComponent implements OnInit, OnDestroy {
       return;
     }
   
-    this.inscripcionesService.eliminarInscripcionByID(inscripcion.id).subscribe(() => {
-      this.inscripciones = this.inscripciones?.filter(insc => insc.id !== inscripcion.id);
-    }, error => {
-      console.error('Error al eliminar la inscripción:', error);
+
+
+    Swal.fire({
+      title: "ELIMINAR",
+      text: "¿Está seguro de eliminar la inscripcion?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.inscripcionesService.eliminarInscripcionByID(inscripcion.id).subscribe(() => {
+          this.inscripciones = this.inscripciones?.filter(insc => insc.id !== inscripcion.id);
+        }, error => {
+          console.error('Error al eliminar la inscripción:', error);
+        });
+      }
     });
+  
   }
   
   

@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Crear un Usuario</h2>
+<div mat-dialog-content>
+    <form   [formGroup]="adminForm">
+      <div class="row">
+
+        
+        <div class="col-6" style="font-size:xx-large;">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Nombre Usuario</mat-label>
+            <input formControlName="nombre" matInput />
+        
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput />
+          </mat-form-field>
+        </div>
+
+        <div class="col-6" style="font-size:xx-large;">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Rol de Administrador</mat-label>
+              <input formControlName="role" matInput />
+          
+            </mat-form-field>
+          </div>
+    </div>
+    
+          
+ 
+    </form>
+</div>
+
+<div class="d-flex justify-content-end" mat-dialog-actions>
+  <button mat-dialog-close mat-button>Cancelar</button>
+  <button mat-button (click)="enviar()">Guardar</button>
+</div>
+

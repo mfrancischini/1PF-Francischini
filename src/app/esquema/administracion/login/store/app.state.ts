@@ -1,3 +1,4 @@
+import { AdminState } from '../../admin/store/admin.reducer';
 import { CursoState } from '../../cursos/store/curso.reducer';
 import { InscripcionesState } from '../../inscripciones/store/inscripcion.reducer';
 import { UsuarioState } from '../../usuarios/store/usuario.reducer';
@@ -10,5 +11,5 @@ export interface AppState {
   usurio: UsuarioState;
   curso : CursoState;
   inscripcion : InscripcionesState;
-
+  admin : AdminState;
 }

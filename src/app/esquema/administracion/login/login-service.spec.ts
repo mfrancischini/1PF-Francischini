@@ -34,7 +34,7 @@ describe('LoginService', () => {
 
   it('Debe disparar login action al llamar login', () => {
     const dispatchSpy = spyOn(store, 'dispatch').and.callThrough();
-    const loginData = { username: 'mariano', password: '123456' };
+    const loginData = { username: 'admin', password: '123456' };
 
     loginService.login(loginData);
 

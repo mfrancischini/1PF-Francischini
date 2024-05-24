@@ -27,7 +27,7 @@ export interface IInscripciones {
 export interface IUsuario {
     id: string;
     nombre: string;
-    email: string;
+    password: string;
     role: string;
 }
 
@@ -43,6 +43,16 @@ export interface ICreateAlumnosPayload {
     apellido: string;
     email: string;
 }
+
+
+export interface ICreateAdminPayload {
+    id: string;
+    usuario: string;
+    password: string;
+    role: string;
+}
+
+
 
 export interface ICreateCursosPayload {
 

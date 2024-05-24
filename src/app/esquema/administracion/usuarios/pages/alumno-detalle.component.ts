@@ -5,6 +5,7 @@ import { IAlumnos, ICursos, IInscripciones } from '../../models';
 import { UsersService } from '../../servicios/usuarios.service';
 import { InscrpcionesService } from '../../servicios/inscripciones.service';
 import { CursosService } from '../../servicios/cursos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-alumno-detalle',
@@ -58,21 +59,30 @@ export class AlumnoDetalleComponent implements OnInit, OnDestroy {
     this.subscriptions.add(cursosSubscription);
   }
   eliminarInscripcionById(studentId: string | undefined, courseId: string): void {
-    if (studentId) {
-      const deleteSubscription = this.inscripcionesService.eliminarInscripcion(studentId, courseId).subscribe({
-        next: () => {
-          this.cursos = this.cursos.filter(curso => curso.id !== courseId);
-        },
-        error: (err) => {
-          console.error('Error al eliminar inscripción:', err);
-        }
-      });
-      this.subscriptions.add(deleteSubscription);
-    } else {
-      console.error('El ID del alumno es indefinido');
-    }
-  }
 
+    Swal.fire({
+      title: "ELIMINAR",
+      text: "¿Está seguro de eliminar la inscripcion?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí"
+    }).then((result) => {
+      if (studentId) {
+        const deleteSubscription = this.inscripcionesService.eliminarInscripcion(studentId, courseId).subscribe({
+          next: () => {
+            this.cursos = this.cursos.filter(curso => curso.id !== courseId);
+          },
+          error: (err) => {
+          }
+        });
+        this.subscriptions.add(deleteSubscription);
+      } else {
+      }
+    });
+    
+  }
   
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
